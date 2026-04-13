@@ -22,7 +22,7 @@ export default function PhotoSlider() {
   if (slides.length === 0) return null;
 
   return (
-    <section className="bg-secondary-900 py-6 md:py-10">
+    <section className="bg-white py-6 md:py-10">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="flex gap-4">
           {/* Main slide */}
@@ -89,7 +89,7 @@ export default function PhotoSlider() {
               key={index}
               onClick={() => setCurrent(index)}
               className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                index === current ? "bg-white" : "bg-white/40"
+                index === current ? "bg-secondary-800" : "bg-secondary-300"
               }`}
             />
           ))}
