@@ -5,7 +5,7 @@ export default function RecentNews() {
   const recentNews = news.slice(0, 3);
 
   return (
-    <section className="py-16 bg-secondary-50">
+    <section className="py-16 bg-white">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-secondary-800">Latest News</h2>

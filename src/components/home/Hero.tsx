@@ -2,12 +2,12 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="bg-white text-secondary-800">
+    <section className="bg-secondary-50 text-secondary-800">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="max-w-3xl">
           <div className="flex items-center gap-4 mb-6">
             <h2 className="text-2xl md:text-3xl font-bold text-secondary-800">About</h2>
-            <Image src="/images/logo9.gif" alt="DEHUB" width={160} height={50} className="h-14 md:h-14 w-auto" unoptimized />
+            <Image src="/images/logo9.gif" alt="DEHUB" width={160} height={50} className="h-14 md:h-18 w-auto" unoptimized />
           </div>
           {/* <p className="text-lg text-secondary-500 leading-relaxed mb-4">
             DEHUB (Design Engineering HUB) 연구실은 사람과 컴퓨터, 사람과 AI 간의
