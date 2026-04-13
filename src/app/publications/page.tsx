@@ -16,7 +16,7 @@ export default function PublicationsPage() {
   return (
     <div className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold text-secondary-800 mb-8">
           Publications
         </h1>
 
@@ -26,8 +26,8 @@ export default function PublicationsPage() {
             onClick={() => setSelectedYear(null)}
             className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
               selectedYear === null
-                ? "bg-primary-600 text-white"
-                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                ? "bg-secondary-800 text-white"
+                : "bg-secondary-50 text-secondary-500 hover:bg-secondary-100"
             }`}
           >
             All
@@ -38,8 +38,8 @@ export default function PublicationsPage() {
               onClick={() => setSelectedYear(year)}
               className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
                 selectedYear === year
-                  ? "bg-primary-600 text-white"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  ? "bg-secondary-800 text-white"
+                  : "bg-secondary-50 text-secondary-500 hover:bg-secondary-100"
               }`}
             >
               {year}
@@ -47,7 +47,7 @@ export default function PublicationsPage() {
           ))}
         </div>
 
-        <p className="text-sm text-slate-500 mb-6">{filtered.length} publications</p>
+        <p className="text-sm text-secondary-400 mb-6">{filtered.length} publications</p>
 
         <div className="space-y-4">
           {filtered.map((pub) => (

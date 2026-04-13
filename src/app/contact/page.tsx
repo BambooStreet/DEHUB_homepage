@@ -8,13 +8,13 @@ export default function ContactPage() {
   return (
     <div className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-12">
+        <h1 className="text-3xl md:text-4xl font-bold text-secondary-800 mb-12">
           Contact
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-6">
+            <h2 className="text-xl font-semibold text-secondary-800 mb-6">
               연락처 정보
             </h2>
 
@@ -27,8 +27,8 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-medium text-slate-900">주소</h3>
-                  <p className="text-slate-600 mt-1">
+                  <h3 className="font-medium text-secondary-800">주소</h3>
+                  <p className="text-secondary-500 mt-1">
                     서울특별시 OO구 OO로 123<br />
                     OO대학교 공학관 000호
                   </p>
@@ -42,7 +42,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-medium text-slate-900">이메일</h3>
+                  <h3 className="font-medium text-secondary-800">이메일</h3>
                   <a href="mailto:dehub@university.ac.kr" className="text-primary-600 hover:text-primary-700 mt-1 block">
                     dehub@university.ac.kr
                   </a>
@@ -56,8 +56,8 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-medium text-slate-900">전화</h3>
-                  <p className="text-slate-600 mt-1">02-000-0000</p>
+                  <h3 className="font-medium text-secondary-800">전화</h3>
+                  <p className="text-secondary-500 mt-1">02-000-0000</p>
                 </div>
               </div>
             </div>
@@ -65,11 +65,11 @@ export default function ContactPage() {
 
           {/* Map placeholder */}
           <div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-6">
+            <h2 className="text-xl font-semibold text-secondary-800 mb-6">
               찾아오는 길
             </h2>
-            <div className="aspect-[4/3] bg-slate-100 rounded-xl border border-slate-200 flex items-center justify-center">
-              <div className="text-center text-slate-400">
+            <div className="aspect-[4/3] bg-secondary-50 rounded-xl border border-secondary-100 flex items-center justify-center">
+              <div className="text-center text-secondary-300">
                 <svg className="w-12 h-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
                 </svg>
