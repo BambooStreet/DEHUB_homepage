@@ -38,17 +38,36 @@ export default function AboutPage() {
         {/* Introduction */}
         <section className="max-w-3xl mb-16">
           <h1 className="text-3xl md:text-4xl font-bold text-secondary-800 mb-6">
-            About DEHUB
+            Welcome
           </h1>
           <p className="text-lg text-secondary-500 leading-relaxed mb-4">
-            DEHUB (Design Engineering HUB) 연구실은 사람과 컴퓨터, 사람과 AI 간의
-            상호작용을 연구하는 HCI/HAI 연구실입니다. 사용자 중심 설계 철학을 바탕으로
-            기술이 사람에게 더 나은 경험을 제공할 수 있도록 연구합니다.
-          </p>
-          <p className="text-lg text-secondary-500 leading-relaxed">
-            우리 연구실은 사용자 연구, 인터랙션 디자인, 프로토타이핑, 실험 평가 등
-            다양한 방법론을 활용하며, 학제간 협력을 통해 실제 사용자 문제를 해결하는
-            연구를 지향합니다.
+          연구를 하고자 한다면 거쳐야 하는 단계들이 있습니다.
+          <br />
+          <br />
+          지금까지 수많은 사람들이 블록처럼 차곡차곡 쌓아놓은 방대하고도 견고한 지식들이 담겨 있는 논문들을 읽어보고, 가설을 세우고, 다양한 방법을 통해 데이터를 모으고, 데이터를 분석하고 해석하여, 마침내 나의 주장을 뒷받침하고 시사점을 찾아내는 일련의 과정들을 거쳐야 합니다.
+          <br />
+          <br />
+          물론 나열해 놓은 단계들로 넘어가기 위해서는 수많은 시행착오를 거치고 나 자신의 한계를 여러 번 만나게 될 것입니다.
+          <br />
+          <br />
+          분명 어려운 일이고, 많이 노력해야 하는 일입니다.
+          <br />
+          <br />
+          하지만 지금의 이 여정이 우리를 들뜨게 하는 만큼, 노력하고 싶게 만드는 만큼,
+          <br />
+          <br />
+          앞으로 성장하게 될 당신과 우리들의 모습이 조금이라도 기대가 된다면 DE HuB LAB에서 성장의 여정을 함께 하시길 바랍니다. 
+          <br />
+          <br />
+          어제보다 오늘 더 나은 사람이 되어있을 거라 믿으면서 앞으로 나아가다 보면, 전문가가 된 스스로를 만날 수 있기를 희망합니다.
+          
+          <br />
+          <br />
+          <br />
+          <br />
+          DE HuB LAB 일동   
+          <br />
+          <br />
           </p>
         </section>
 

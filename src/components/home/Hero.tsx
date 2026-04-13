@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="bg-secondary-50 text-secondary-800">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="flex flex-col items-center text-center">
-          <Image src="/images/logo9.gif" alt="DEHUB" width={200} height={65} className="h-16 md:h-20 w-auto mb-6" unoptimized />
+          <Image src="/images/logo9.gif" alt="DEHUB" width={200} height={65} className="h-16 md:h-30 w-auto mb-6" unoptimized />
 
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-secondary-800">
             Welcome to <span className="text-primary-500">DE HuB LAB</span>
