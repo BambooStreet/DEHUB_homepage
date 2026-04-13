@@ -9,11 +9,10 @@ export default function Hero() {
             DE<span className="text-primary-200">HUB</span>
           </h1>
           <p className="mt-2 text-lg md:text-xl text-primary-100 font-medium">
-            Data Engineering HUB Laboratory
+            Welcome to DE HuB LAB
           </p>
           <p className="mt-6 text-lg text-slate-300 leading-relaxed max-w-2xl">
-            데이터 엔지니어링의 핵심 기술을 연구하고, 대규모 데이터 처리,
-            지식 그래프, 분산 시스템 등 다양한 분야에서 혁신적인 연구를 수행합니다.
+            연구라는, 미지의 세계에서 진리를 찾아 헤매는 모험 그 모험을 함께 할 사람들을 찾습니다.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link

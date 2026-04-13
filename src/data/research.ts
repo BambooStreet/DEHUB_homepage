@@ -3,38 +3,38 @@ import { ResearchProject } from "@/types";
 export const projects: ResearchProject[] = [
   {
     id: "proj-1",
-    title: "대규모 실시간 데이터 파이프라인 최적화",
+    title: "사용자 중심 설명 가능한 AI 인터페이스 설계",
     description:
-      "분산 환경에서의 대규모 스트림 데이터 처리를 위한 효율적인 파이프라인 아키텍처를 연구합니다. Apache Kafka, Flink 등의 기술을 활용하여 실시간 데이터 처리 성능을 극대화합니다.",
+      "AI 시스템의 의사결정 과정을 사용자가 이해하고 신뢰할 수 있도록 돕는 설명 인터페이스를 설계합니다. 사용자 실험과 프로토타이핑을 통해 효과적인 XAI 인터랙션 패턴을 탐구합니다.",
     period: "2024.03 - 현재",
     status: "ongoing",
-    tags: ["Stream Processing", "Apache Kafka", "Apache Flink", "Distributed Systems"],
+    tags: ["Explainable AI", "User Study", "Trust in AI", "Interface Design"],
   },
   {
     id: "proj-2",
-    title: "지식 그래프 자동 구축 시스템",
+    title: "고령자를 위한 AI 대화 에이전트 디자인",
     description:
-      "비정형 텍스트 데이터로부터 자동으로 지식 그래프를 구축하는 시스템을 개발합니다. NLP 기술과 그래프 데이터베이스를 결합하여 대규모 지식 베이스를 구축합니다.",
+      "디지털 소외 계층인 고령자가 AI 기반 대화 시스템을 자연스럽게 사용할 수 있도록 인터랙션 패턴과 인터페이스를 연구합니다. 참여적 디자인 방법론을 적용합니다.",
     period: "2023.09 - 현재",
     status: "ongoing",
-    tags: ["Knowledge Graph", "NLP", "Neo4j", "Information Extraction"],
+    tags: ["Conversational AI", "Accessible Design", "Participatory Design", "Aging"],
   },
   {
     id: "proj-3",
-    title: "IoT 센서 데이터 시각화 플랫폼",
+    title: "Human-AI 협업 의사결정 시스템",
     description:
-      "IoT 환경에서 수집되는 센서 데이터를 실시간으로 시각화하고 분석하는 웹 기반 플랫폼을 개발합니다.",
+      "사람과 AI가 함께 의사결정을 내리는 과정에서 발생하는 인지적 편향, 의존성, 신뢰 문제를 연구하고 효과적인 협업 인터페이스를 제안합니다.",
     period: "2023.03 - 2024.12",
     status: "completed",
-    tags: ["IoT", "Data Visualization", "React", "D3.js"],
+    tags: ["Human-AI Collaboration", "Decision Making", "Cognitive Bias", "Mixed-Methods"],
   },
   {
     id: "proj-4",
-    title: "분산 데이터베이스 쿼리 최적화",
+    title: "AI 기반 접근성 도구 사용성 평가",
     description:
-      "분산 데이터베이스 환경에서 복잡한 쿼리의 실행 성능을 최적화하는 기법을 연구합니다. 쿼리 플래닝, 인덱싱, 캐싱 전략을 포함합니다.",
+      "장애인 사용자를 위한 AI 보조 기술의 사용성을 평가하고, 포용적 디자인 가이드라인을 개발합니다.",
     period: "2022.09 - 2024.06",
     status: "completed",
-    tags: ["Database", "Query Optimization", "Distributed Systems"],
+    tags: ["Accessibility", "Assistive Technology", "Usability Evaluation", "Inclusive Design"],
   },
 ];

@@ -8,7 +8,7 @@ export const members: Member[] = [
     role: "professor",
     position: "교수 (Professor)",
     email: "professor@university.ac.kr",
-    research: ["Data Engineering", "Big Data", "Machine Learning"],
+    research: ["Human-Computer Interaction", "Human-AI Interaction", "UX Design"],
     homepage: "https://university.ac.kr/~professor",
   },
   {
@@ -18,7 +18,7 @@ export const members: Member[] = [
     role: "phd",
     position: "박사과정 (Ph.D. Student)",
     email: "cheolsu@university.ac.kr",
-    research: ["Data Pipeline", "Stream Processing"],
+    research: ["Conversational AI", "Explainable AI", "Human-AI Collaboration"],
   },
   {
     id: "student-lee",
@@ -27,7 +27,7 @@ export const members: Member[] = [
     role: "phd",
     position: "박사과정 (Ph.D. Student)",
     email: "younghee@university.ac.kr",
-    research: ["Knowledge Graph", "NLP"],
+    research: ["Accessible Computing", "Inclusive Design", "Assistive Technology"],
   },
   {
     id: "student-park",
@@ -36,7 +36,7 @@ export const members: Member[] = [
     role: "master",
     position: "석사과정 (M.S. Student)",
     email: "minsu@university.ac.kr",
-    research: ["Data Visualization", "Web Development"],
+    research: ["Interactive Visualization", "Tangible Interface", "Prototyping"],
   },
   {
     id: "student-choi",
@@ -45,16 +45,16 @@ export const members: Member[] = [
     role: "master",
     position: "석사과정 (M.S. Student)",
     email: "jieun@university.ac.kr",
-    research: ["Database Systems", "Query Optimization"],
+    research: ["AI-mediated Communication", "Social Computing", "User Study"],
   },
   {
     id: "alumni-jung",
     name: "정수현",
     nameEn: "Suhyun Jung",
     role: "alumni",
-    position: "삼성전자 (Samsung Electronics)",
+    position: "네이버 UX리서치 (Naver UX Research)",
     graduationYear: 2024,
-    research: ["Data Mining"],
+    research: ["Usability Evaluation", "User Research"],
   },
 ];
 
