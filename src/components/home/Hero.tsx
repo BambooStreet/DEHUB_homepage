@@ -5,10 +5,10 @@ export default function Hero() {
     <section className="bg-white text-secondary-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3 mb-6">
-            <Image src="/images/logo9.gif" alt="DEHUB" width={160} height={50} className="h-12 w-auto" unoptimized />
+          <div className="flex items-center gap-4 mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-secondary-800">About</h2>
+            <Image src="/images/logo9.gif" alt="DEHUB" width={160} height={50} className="h-10 md:h-12 w-auto" unoptimized />
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-secondary-800 mb-4">About</h2>
           <p className="text-lg text-secondary-500 leading-relaxed mb-4">
             DEHUB (Design Engineering HUB) 연구실은 사람과 컴퓨터, 사람과 AI 간의
             상호작용을 연구하는 HCI/HAI 연구실입니다. 사용자 중심 설계 철학을 바탕으로
