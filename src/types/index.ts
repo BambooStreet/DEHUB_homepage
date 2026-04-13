@@ -38,6 +38,7 @@ export interface NewsItem {
   date: string;
   content: string;
   category: "announcement" | "award" | "event" | "media";
+  image?: string;
 }
 
 export interface GalleryItem {

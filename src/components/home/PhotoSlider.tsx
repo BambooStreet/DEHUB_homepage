@@ -1,30 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
+import { news } from "@/data/news";
 
-const slides = [
-  {
-    src: "/images/avnIjrGMrtgaIPbrHLOM.jpg",
-    alt: "DEHUB 졸업식 단체사진",
-    caption: "졸업식",
-  },
-  {
-    src: "/images/rufuobANNJCVNXEjUQBH.jpg",
-    alt: "DEHUB 학회 참석 단체사진",
-    caption: "학회 참석",
-  },
-  {
-    src: "/images/mMVevVTOhLWbmRrwsjcC.png",
-    alt: "Best Paper Award 수상",
-    caption: "Best Paper Award",
-  },
-  {
-    src: "/images/qCfGHAQQKvUbbpDWGjhw.png",
-    alt: "Research Methodology Seminar",
-    caption: "연구방법론 세미나",
-  },
-];
+const slides = news.filter((item) => item.image);
 
 export default function PhotoSlider() {
   const [current, setCurrent] = useState(0);
@@ -38,43 +19,45 @@ export default function PhotoSlider() {
     return () => clearInterval(timer);
   }, [next]);
 
+  if (slides.length === 0) return null;
+
   return (
     <section className="bg-secondary-900 py-6 md:py-10">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="flex gap-4">
           {/* Main slide */}
-          <div className="relative flex-1 overflow-hidden rounded-xl">
+          <Link
+            href={`/news/${slides[current].id}`}
+            className="relative flex-1 overflow-hidden rounded-xl group"
+          >
             <div className="relative aspect-[16/10]">
-              {slides.map((slide, index) => (
-                <div
-                  key={slide.src}
-                  className={`absolute inset-0 transition-opacity duration-700 ${
-                    index === current ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <Image
-                    src={slide.src}
-                    alt={slide.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 800px"
-                    priority={index === 0}
-                  />
-                </div>
-              ))}
+              <Image
+                src={slides[current].image!}
+                alt={slides[current].title}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, 800px"
+                priority
+              />
 
-              {/* Caption */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                <p className="text-white font-medium">{slides[current].caption}</p>
+              {/* Title overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-5">
+                <span className="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-primary-600 text-white mb-2">
+                  {slides[current].category}
+                </span>
+                <h3 className="text-white font-semibold text-lg leading-snug">
+                  {slides[current].title}
+                </h3>
+                <p className="text-white/60 text-sm mt-1">{slides[current].date}</p>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Vertical thumbnail list */}
           <div className="hidden md:flex flex-col gap-2 w-40 shrink-0">
             {slides.map((slide, index) => (
               <button
-                key={slide.src}
+                key={slide.id}
                 onClick={() => setCurrent(index)}
                 className={`relative rounded-lg overflow-hidden flex-1 transition-all ${
                   index === current
@@ -83,15 +66,15 @@ export default function PhotoSlider() {
                 }`}
               >
                 <Image
-                  src={slide.src}
-                  alt={slide.alt}
+                  src={slide.image!}
+                  alt={slide.title}
                   fill
                   className="object-cover"
                   sizes="160px"
                 />
-                <div className="absolute inset-0 bg-black/30 flex items-end p-2">
-                  <span className="text-white text-xs font-medium leading-tight">
-                    {slide.caption}
+                <div className="absolute inset-0 bg-black/40 flex items-end p-2">
+                  <span className="text-white text-xs font-medium leading-tight line-clamp-2">
+                    {slide.title}
                   </span>
                 </div>
               </button>

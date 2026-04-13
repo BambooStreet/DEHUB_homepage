@@ -8,6 +8,7 @@ export const news: NewsItem[] = [
     content:
       "김철수 학생의 논문 'Understanding User Trust in AI-Generated Explanations'이 HCI 분야 최우수 학회 CHI 2025에 채택되었습니다.",
     category: "award",
+    image: "/images/avnIjrGMrtgaIPbrHLOM.jpg",
   },
   {
     id: "news-2",
@@ -16,6 +17,7 @@ export const news: NewsItem[] = [
     content:
       "DEHUB 연구실에서 2025학년도 석/박사과정 신입생을 모집합니다. HCI, Human-AI Interaction, UX 연구에 관심 있는 학생들의 많은 지원 바랍니다.",
     category: "announcement",
+    image: "/images/rufuobANNJCVNXEjUQBH.jpg",
   },
   {
     id: "news-3",
@@ -24,6 +26,7 @@ export const news: NewsItem[] = [
     content:
       "DEHUB 연구실 2024년 연말 워크숍을 성공적으로 개최하였습니다. 한 해 동안의 연구 성과를 공유하고 2025년 연구 방향을 논의하였습니다.",
     category: "event",
+    image: "/images/mMVevVTOhLWbmRrwsjcC.png",
   },
   {
     id: "news-4",
@@ -32,6 +35,7 @@ export const news: NewsItem[] = [
     content:
       "정수현 학생이 석사 졸업 후 네이버 UX리서치팀에 입사하였습니다. 축하합니다!",
     category: "announcement",
+    image: "/images/qCfGHAQQKvUbbpDWGjhw.png",
   },
   {
     id: "news-5",
