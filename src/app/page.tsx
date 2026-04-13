@@ -6,8 +6,8 @@ import RecentPublications from "@/components/home/RecentPublications";
 export default function Home() {
   return (
     <>
-      <Hero />
       <PhotoSlider />
+      <Hero />
       <RecentNews />
       <RecentPublications />
     </>

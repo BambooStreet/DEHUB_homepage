@@ -43,32 +43,27 @@ export default function PhotoSlider() {
   }, [next]);
 
   return (
-    <section className="py-16 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-secondary-800 mb-8">
-          Lab Activities
-        </h2>
-
-        <div className="relative overflow-hidden rounded-2xl bg-secondary-100">
-          {/* Slides */}
-          <div className="relative aspect-[16/9] md:aspect-[21/9]">
-            {slides.map((slide, index) => (
-              <div
-                key={slide.src}
-                className={`absolute inset-0 transition-opacity duration-700 ${
-                  index === current ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  className="object-contain bg-secondary-50"
-                  sizes="(max-width: 768px) 100vw, 1280px"
-                  priority={index === 0}
-                />
-              </div>
-            ))}
+    <section className="relative">
+      <div className="relative overflow-hidden bg-secondary-900">
+        {/* Slides */}
+        <div className="relative aspect-[16/9] md:aspect-[21/9]">
+          {slides.map((slide, index) => (
+            <div
+              key={slide.src}
+              className={`absolute inset-0 transition-opacity duration-700 ${
+                index === current ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority={index === 0}
+              />
+            </div>
+          ))}
 
             {/* Caption */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
@@ -106,7 +101,6 @@ export default function PhotoSlider() {
               />
             ))}
           </div>
-        </div>
       </div>
     </section>
   );
