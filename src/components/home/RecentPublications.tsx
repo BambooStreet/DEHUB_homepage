@@ -9,7 +9,7 @@ export default function RecentPublications() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-secondary-800">Recent Publications</h2>
-          <Link href="/publications" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
+          <Link href="/publications" className="inline-flex items-center gap-1 px-4 py-2 bg-secondary-800 text-white text-sm font-medium rounded-lg hover:bg-secondary-700 transition-colors">
             View all &rarr;
           </Link>
         </div>
@@ -25,7 +25,7 @@ export default function RecentPublications() {
                   <p className="text-sm text-secondary-400 mt-1">{pub.authors.join(", ")}</p>
                   <p className="text-sm text-secondary-300 mt-1">{pub.venue}</p>
                 </div>
-                <span className="shrink-0 text-sm font-medium text-primary-700 bg-primary-50 px-2 py-1 rounded">
+                <span className="shrink-0 text-sm font-medium text-white bg-primary-600 px-2 py-1 rounded">
                   {pub.year}
                 </span>
               </div>

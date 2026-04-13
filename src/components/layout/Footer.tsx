@@ -2,12 +2,12 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary-800 text-secondary-200">
+    <footer className="bg-secondary-700 text-secondary-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold text-white mb-3">
-              DE<span className="text-primary-400">HUB</span>
+              DE<span className="text-primary-300">HUB</span>
             </h3>
             <p className="text-sm text-secondary-300">
               Design Engineering HUB Laboratory

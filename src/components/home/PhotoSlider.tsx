@@ -96,7 +96,7 @@ export default function PhotoSlider() {
                 key={index}
                 onClick={() => setCurrent(index)}
                 className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  index === current ? "bg-primary-400" : "bg-white/50"
+                  index === current ? "bg-white" : "bg-white/40"
                 }`}
               />
             ))}

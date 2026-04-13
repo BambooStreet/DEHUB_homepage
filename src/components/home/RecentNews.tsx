@@ -9,7 +9,7 @@ export default function RecentNews() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-secondary-800">Latest News</h2>
-          <Link href="/news" className="text-primary-600 hover:text-primary-700 text-sm font-medium">
+          <Link href="/news" className="inline-flex items-center gap-1 px-4 py-2 bg-secondary-800 text-white text-sm font-medium rounded-lg hover:bg-secondary-700 transition-colors">
             View all &rarr;
           </Link>
         </div>
@@ -19,7 +19,7 @@ export default function RecentNews() {
               key={item.id}
               className="p-6 rounded-xl border border-secondary-100 hover:border-primary-300 hover:shadow-md transition-all"
             >
-              <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-primary-50 text-primary-700 mb-3">
+              <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-primary-600 text-white mb-3">
                 {item.category}
               </span>
               <h3 className="text-lg font-semibold text-secondary-800 mb-2">{item.title}</h3>
