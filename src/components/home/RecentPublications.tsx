@@ -6,7 +6,7 @@ export default function RecentPublications() {
 
   return (
     <section className="py-16 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-secondary-800">Recent Publications</h2>
           <Link href="/publications" className="inline-flex items-center gap-1 px-4 py-2 bg-secondary-800 text-white text-sm font-medium rounded-lg hover:bg-secondary-700 transition-colors">
