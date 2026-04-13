@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
@@ -5,9 +6,7 @@ export default function Hero() {
     <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-secondary-800 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32">
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            DE<span className="text-primary-200">HUB</span>
-          </h1>
+          <Image src="/images/logo9.gif" alt="DEHUB" width={280} height={90} className="h-20 md:h-24 w-auto brightness-0 invert" unoptimized />
           <p className="mt-2 text-lg md:text-xl text-primary-100 font-medium">
             Welcome to DE HuB LAB
           </p>

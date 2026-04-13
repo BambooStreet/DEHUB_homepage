@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -24,9 +25,7 @@ export default function Header() {
       <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-primary-600">
-              DE<span className="text-secondary-600">HUB</span>
-            </span>
+            <Image src="/images/logo9.gif" alt="DEHUB" width={120} height={40} className="h-9 w-auto" unoptimized />
           </Link>
 
           {/* Desktop nav */}
