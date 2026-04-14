@@ -1,5 +1,8 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
-import { members, getRoleLabel } from "@/data/members";
+import { getMembers } from "@/lib/db/queries";
+import { getRoleLabel } from "@/data/members";
 import MemberCard from "@/components/members/MemberCard";
 import { Member } from "@/types";
 
@@ -9,7 +12,9 @@ export const metadata: Metadata = {
 
 const roleOrder: Member["role"][] = ["professor", "phd", "master", "undergraduate", "alumni"];
 
-export default function MembersPage() {
+export default async function MembersPage() {
+  const members = await getMembers();
+
   const groupedMembers = roleOrder
     .map((role) => ({
       role,

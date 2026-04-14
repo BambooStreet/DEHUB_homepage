@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { publications } from "@/data/publications";
+import { getPublications } from "@/lib/db/queries";
 
-export default function RecentPublications() {
+export default async function RecentPublications() {
+  const publications = await getPublications();
   const recentPubs = publications.slice(0, 3);
 
   return (

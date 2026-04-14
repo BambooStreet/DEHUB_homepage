@@ -1,12 +1,16 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
-import { news } from "@/data/news";
+import { getNews } from "@/lib/db/queries";
 import NewsCard from "@/components/news/NewsCard";
 
 export const metadata: Metadata = {
   title: "News",
 };
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  const news = await getNews();
+
   return (
     <div className="py-16 md:py-24">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">

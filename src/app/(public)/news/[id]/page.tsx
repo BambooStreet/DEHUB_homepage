@@ -1,22 +1,19 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { news } from "@/data/news";
+import { getNewsById } from "@/lib/db/queries";
 
-export function generateStaticParams() {
-  return news.map((item) => ({ id: item.id }));
-}
-
-export function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
-  return params.then(({ id }) => {
-    const item = news.find((n) => n.id === id);
-    return { title: item?.title ?? "News" };
-  });
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const item = await getNewsById(id);
+  return { title: item?.title ?? "News" };
 }
 
 export default async function NewsDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const item = news.find((n) => n.id === id);
+  const item = await getNewsById(id);
 
   if (!item) notFound();
 

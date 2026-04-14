@@ -31,3 +31,21 @@ export interface NewsItem {
   image?: string;
 }
 
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  period: string;
+  status: "active" | "completed" | "upcoming";
+  tags: string[];
+  image?: string;
+}
+
+export interface Award {
+  id: string;
+  title: string;
+  recipient: string;
+  date: string;
+  description?: string;
+  image?: string;
+}

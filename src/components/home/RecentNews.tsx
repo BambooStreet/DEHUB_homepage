@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { news } from "@/data/news";
+import { getNews } from "@/lib/db/queries";
 
-export default function RecentNews() {
+export default async function RecentNews() {
+  const news = await getNews();
   const recentNews = news.slice(0, 3);
 
   return (
