@@ -11,6 +11,16 @@ export interface Member {
   graduationYear?: number;
 }
 
+export interface Publication {
+  id: string;
+  title: string;
+  authors: string[];
+  venue: string;
+  year: number;
+  type: "journal" | "conference" | "workshop" | "thesis";
+  link?: string;
+  doi?: string;
+}
 
 export interface NewsItem {
   id: string;
