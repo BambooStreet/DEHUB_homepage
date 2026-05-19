@@ -18,6 +18,8 @@ export interface Publication {
   venue: string;
   year: number;
   type: "journal" | "conference" | "workshop" | "thesis";
+  region: "domestic" | "international";
+  indexing?: string;
   link?: string;
   doi?: string;
 }

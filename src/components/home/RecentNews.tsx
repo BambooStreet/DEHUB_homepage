@@ -16,17 +16,20 @@ export default async function RecentNews() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {recentNews.map((item) => (
-            <article
+            <Link
               key={item.id}
-              className="p-6 rounded-xl border border-secondary-100 hover:border-primary-300 hover:shadow-md transition-all"
+              href={`/news/${item.id}`}
+              className="block p-6 rounded-xl border border-secondary-100 hover:border-primary-300 hover:shadow-md transition-all"
             >
-              <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-primary-600 text-white mb-3">
-                {item.category}
-              </span>
-              <h3 className="text-lg font-semibold text-secondary-800 mb-2">{item.title}</h3>
-              <p className="text-sm text-secondary-400 mb-3">{item.date}</p>
-              <p className="text-sm text-secondary-500 line-clamp-2">{item.content}</p>
-            </article>
+              <article>
+                <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-primary-600 text-white mb-3">
+                  {item.category}
+                </span>
+                <h3 className="text-lg font-semibold text-secondary-800 mb-2">{item.title}</h3>
+                <p className="text-sm text-secondary-400 mb-3">{item.date}</p>
+                <p className="text-sm text-secondary-500 line-clamp-2">{item.content}</p>
+              </article>
+            </Link>
           ))}
         </div>
       </div>

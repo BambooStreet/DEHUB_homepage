@@ -20,6 +20,8 @@ export default async function AdminPublicationsPage() {
             <tr>
               <th className="text-left px-4 py-3">Title</th>
               <th className="text-left px-4 py-3">Type</th>
+              <th className="text-left px-4 py-3">Region</th>
+              <th className="text-left px-4 py-3">Indexing</th>
               <th className="text-left px-4 py-3">Year</th>
               <th className="text-left px-4 py-3">Venue</th>
               <th className="text-right px-4 py-3">Actions</th>
@@ -32,6 +34,12 @@ export default async function AdminPublicationsPage() {
                 <td className="px-4 py-3">
                   <span className="px-2 py-0.5 bg-secondary-100 text-secondary-600 rounded text-xs">{p.type}</span>
                 </td>
+                <td className="px-4 py-3">
+                  <span className="px-2 py-0.5 bg-secondary-100 text-secondary-600 rounded text-xs">
+                    {p.region === "domestic" ? "Domestic" : "International"}
+                  </span>
+                </td>
+                <td className="px-4 py-3 text-secondary-500 text-xs">{p.indexing || "-"}</td>
                 <td className="px-4 py-3 text-secondary-500">{p.year}</td>
                 <td className="px-4 py-3 text-secondary-500 max-w-xs truncate">{p.venue}</td>
                 <td className="px-4 py-3 text-right space-x-3">
@@ -41,7 +49,7 @@ export default async function AdminPublicationsPage() {
               </tr>
             ))}
             {publications.length === 0 && (
-              <tr><td colSpan={5} className="px-4 py-8 text-center text-secondary-400">No publications yet.</td></tr>
+              <tr><td colSpan={7} className="px-4 py-8 text-center text-secondary-400">No publications yet.</td></tr>
             )}
           </tbody>
         </table>

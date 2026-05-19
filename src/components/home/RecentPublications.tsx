@@ -16,9 +16,10 @@ export default async function RecentPublications() {
         </div>
         <div className="space-y-4">
           {recentPubs.map((pub) => (
-            <div
+            <Link
               key={pub.id}
-              className="p-5 bg-white rounded-xl border border-secondary-100 hover:border-primary-300 hover:shadow-sm transition-all"
+              href="/publications"
+              className="block p-5 bg-white rounded-xl border border-secondary-100 hover:border-primary-300 hover:shadow-sm transition-all"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -30,7 +31,7 @@ export default async function RecentPublications() {
                   {pub.year}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

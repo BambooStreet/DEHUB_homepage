@@ -21,6 +21,8 @@ CREATE TABLE publications (
   venue TEXT NOT NULL,
   year INTEGER NOT NULL,
   type TEXT NOT NULL CHECK (type IN ('journal','conference','workshop','thesis')),
+  region TEXT NOT NULL DEFAULT 'international' CHECK (region IN ('domestic','international')),
+  indexing TEXT,
   link TEXT,
   doi TEXT,
   sort_order INTEGER DEFAULT 0,

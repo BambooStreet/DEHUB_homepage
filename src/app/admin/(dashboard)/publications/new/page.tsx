@@ -25,11 +25,24 @@ export default function NewPublicationPage() {
           <div>
             <label className="block text-sm font-medium text-secondary-700 mb-1">Type</label>
             <select name="type" required className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm">
-              <option value="conference">Conference</option>
               <option value="journal">Journal</option>
+              <option value="conference">Conference</option>
               <option value="workshop">Workshop</option>
               <option value="thesis">Thesis</option>
             </select>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-secondary-700 mb-1">Region</label>
+            <select name="region" required defaultValue="international" className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm">
+              <option value="international">International</option>
+              <option value="domestic">Domestic</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-secondary-700 mb-1">Indexing</label>
+            <input name="indexing" placeholder="SSCI, SCI, SCIE, KCI, Scopus..." className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
           </div>
         </div>
         <div>

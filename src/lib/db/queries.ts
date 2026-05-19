@@ -45,7 +45,7 @@ function mapMember(row: Record<string, unknown>): Member {
 export async function getPublications(): Promise<Publication[]> {
   const sql = getDb();
   const rows = await sql`
-    SELECT id, title, authors, venue, year, type, link, doi
+    SELECT id, title, authors, venue, year, type, region, indexing, link, doi
     FROM publications ORDER BY year DESC, sort_order, created_at DESC
   `;
   return rows.map(mapPublication);
@@ -54,7 +54,7 @@ export async function getPublications(): Promise<Publication[]> {
 export async function getPublicationById(id: string): Promise<Publication | null> {
   const sql = getDb();
   const rows = await sql`
-    SELECT id, title, authors, venue, year, type, link, doi
+    SELECT id, title, authors, venue, year, type, region, indexing, link, doi
     FROM publications WHERE id = ${id}
   `;
   return rows.length > 0 ? mapPublication(rows[0]) : null;
@@ -68,6 +68,8 @@ function mapPublication(row: Record<string, unknown>): Publication {
     venue: row.venue as string,
     year: row.year as number,
     type: row.type as Publication["type"],
+    region: (row.region as Publication["region"]) || "international",
+    indexing: (row.indexing as string) || undefined,
     link: (row.link as string) || undefined,
     doi: (row.doi as string) || undefined,
   };

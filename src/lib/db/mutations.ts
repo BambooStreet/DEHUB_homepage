@@ -39,9 +39,10 @@ export async function deleteMember(id: string) {
 export async function createPublication(data: Publication) {
   const sql = getDb();
   await sql`
-    INSERT INTO publications (id, title, authors, venue, year, type, link, doi)
+    INSERT INTO publications (id, title, authors, venue, year, type, region, indexing, link, doi)
     VALUES (${data.id}, ${data.title}, ${data.authors}, ${data.venue}, ${data.year},
-            ${data.type}, ${data.link ?? null}, ${data.doi ?? null})
+            ${data.type}, ${data.region}, ${data.indexing ?? null},
+            ${data.link ?? null}, ${data.doi ?? null})
   `;
 }
 
@@ -54,6 +55,8 @@ export async function updatePublication(id: string, data: Partial<Publication>) 
       venue = COALESCE(${data.venue ?? null}, venue),
       year = COALESCE(${data.year ?? null}, year),
       type = COALESCE(${data.type ?? null}, type),
+      region = COALESCE(${data.region ?? null}, region),
+      indexing = ${data.indexing ?? null},
       link = ${data.link ?? null},
       doi = ${data.doi ?? null},
       updated_at = NOW()

@@ -152,6 +152,8 @@ export async function createPublicationAction(formData: FormData) {
     venue: formData.get("venue") as string,
     year: Number(formData.get("year")),
     type: formData.get("type") as "journal" | "conference" | "workshop" | "thesis",
+    region: formData.get("region") as "domestic" | "international",
+    indexing: (formData.get("indexing") as string) || undefined,
     link: (formData.get("link") as string) || undefined,
     doi: (formData.get("doi") as string) || undefined,
   });
@@ -170,6 +172,8 @@ export async function updatePublicationAction(formData: FormData) {
     venue: formData.get("venue") as string,
     year: Number(formData.get("year")),
     type: formData.get("type") as "journal" | "conference" | "workshop" | "thesis",
+    region: formData.get("region") as "domestic" | "international",
+    indexing: (formData.get("indexing") as string) || undefined,
     link: (formData.get("link") as string) || undefined,
     doi: (formData.get("doi") as string) || undefined,
   });

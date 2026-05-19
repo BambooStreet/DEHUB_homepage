@@ -36,11 +36,24 @@ export default async function EditPublicationPage({
           <div>
             <label className="block text-sm font-medium text-secondary-700 mb-1">Type</label>
             <select name="type" required defaultValue={pub.type} className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm">
-              <option value="conference">Conference</option>
               <option value="journal">Journal</option>
+              <option value="conference">Conference</option>
               <option value="workshop">Workshop</option>
               <option value="thesis">Thesis</option>
             </select>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-secondary-700 mb-1">Region</label>
+            <select name="region" required defaultValue={pub.region} className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm">
+              <option value="international">International</option>
+              <option value="domestic">Domestic</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-secondary-700 mb-1">Indexing</label>
+            <input name="indexing" defaultValue={pub.indexing || ""} placeholder="SSCI, SCI, SCIE, KCI, Scopus..." className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
           </div>
         </div>
         <div>
