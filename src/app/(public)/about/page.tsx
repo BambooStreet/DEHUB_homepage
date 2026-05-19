@@ -4,33 +4,6 @@ export const metadata: Metadata = {
   title: "About",
 };
 
-const researchAreas = [
-  {
-    title: "Human-Computer Interaction",
-    description:
-      "사용자 경험을 중심으로 인터랙티브 시스템을 설계하고 평가합니다. 사용자 연구, 프로토타이핑, 사용성 평가 등 다양한 방법론을 활용합니다.",
-    icon: "🖥️",
-  },
-  {
-    title: "Human-AI Interaction",
-    description:
-      "사람과 AI 시스템 간의 효과적인 상호작용을 연구합니다. AI의 설명 가능성, 신뢰, 공정성 등 사용자 관점의 AI 설계를 탐구합니다.",
-    icon: "🤖",
-  },
-  {
-    title: "Accessible & Inclusive Design",
-    description:
-      "다양한 사용자를 포용하는 기술과 인터페이스를 설계합니다. 고령자, 장애인 등 소외 계층을 위한 보조 기술을 연구합니다.",
-    icon: "♿",
-  },
-  {
-    title: "Social Computing & CSCW",
-    description:
-      "기술이 매개하는 사회적 상호작용과 협업을 연구합니다. AI 시대의 커뮤니케이션, 온라인 커뮤니티, 협업 도구를 탐구합니다.",
-    icon: "👥",
-  },
-];
-
 export default function AboutPage() {
   return (
     <div className="py-16 md:py-24">
@@ -56,16 +29,16 @@ export default function AboutPage() {
           하지만 지금의 이 여정이 우리를 들뜨게 하는 만큼, 노력하고 싶게 만드는 만큼,
           <br />
           <br />
-          앞으로 성장하게 될 당신과 우리들의 모습이 조금이라도 기대가 된다면 DE HuB LAB에서 성장의 여정을 함께 하시길 바랍니다. 
+          앞으로 성장하게 될 당신과 우리들의 모습이 조금이라도 기대가 된다면 DE HuB LAB에서 성장의 여정을 함께 하시길 바랍니다.
           <br />
           <br />
           어제보다 오늘 더 나은 사람이 되어있을 거라 믿으면서 앞으로 나아가다 보면, 전문가가 된 스스로를 만날 수 있기를 희망합니다.
-          
+
           <br />
           <br />
           <br />
           <br />
-          DE HuB LAB 일동   
+          DE HuB LAB 일동
           <br />
           <br />
           </p>
@@ -74,35 +47,49 @@ export default function AboutPage() {
         {/* Vision */}
         <section className="mb-16">
           <div className="bg-gradient-to-r from-secondary-800 to-secondary-700 text-white rounded-2xl p-8 md:p-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Our Vision</h2>
-            <p className="text-lg text-secondary-200 leading-relaxed max-w-2xl">
-              AI 시대에 사람 중심의 기술을 설계하고, 모든 사용자가 기술의 혜택을
-              누릴 수 있는 포용적 인터랙션을 만들어가는 글로벌 수준의 HCI 연구
-              그룹이 되는 것을 목표로 합니다.
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">Our Vision</h2>
+            <p className="text-lg font-medium text-primary-200 mb-8">
+              정보화된 환경(Digital Environment) 속에서 인간의 행동(Human Behavior)
             </p>
-          </div>
-        </section>
-
-        {/* Research Areas */}
-        <section>
-          <h2 className="text-2xl md:text-3xl font-bold text-secondary-800 mb-8">
-            Research Areas
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {researchAreas.map((area) => (
-              <div
-                key={area.title}
-                className="p-6 rounded-xl border border-secondary-100 hover:border-primary-300 hover:shadow-md transition-all"
-              >
-                <span className="text-3xl mb-3 block">{area.icon}</span>
-                <h3 className="text-lg font-semibold text-secondary-800 mb-2">
-                  {area.title}
-                </h3>
-                <p className="text-sm text-secondary-500 leading-relaxed">
-                  {area.description}
-                </p>
-              </div>
-            ))}
+            <div className="space-y-5 text-secondary-200 leading-relaxed">
+              <p>
+                스마트폰과 인터넷은 우리로 하여금 언제 어디서든 원하는 콘텐츠를 소비할 수
+                있도록 해주었고, AI는 기계를 더 똑똑하게 만들어 인간의 삶을 더 풍요롭게
+                만들어주고 있습니다.
+              </p>
+              <p>
+                기술의 발전은 어느덧 우리를 운전기사 없이도 자동차가 운전되고, 어떤
+                물건이든 주문하면 하루 이내에 받을 수 있는 세상에 데려다 주었습니다.
+              </p>
+              <p>
+                그런데 인터넷에 올라오는 신문 기사와 그 기사에 달린 댓글들을 보면 과연
+                우리는 기술이 발전된 세상에서 &ldquo;행복&rdquo;하게 잘 살고 있는지 의문이
+                듭니다.
+              </p>
+              <p>
+                인간의 거리를 가깝게 만들어야 하는 인터넷이라는 커뮤니케이션 기술은 오히려
+                인간의 거리를 멀게 만들고 있고, 혹자는 AI가 인간의 일자리를 전부 빼앗아 갈
+                것이라고 걱정합니다.
+              </p>
+              <p className="text-white font-medium">
+                우리의 기술은 올바른 방향으로 발전하고 있는 것일까요?
+              </p>
+              <p className="text-white font-medium">
+                우리는 기술을 어떤 방향으로 이끌어야 하는 것일까요?
+              </p>
+              <p>
+                이 문제에 대한 해답은, 기술만 보아서는, 또는 인간만 보아서는 절대로 찾아질
+                수 없으며, 어떤 기술(AI, 로봇, 인터넷 등)이 어떤 서비스(온라인 쇼핑, 챗봇,
+                OTT 등)를 만들어냈고, 그러한 기술과 서비스가 어떤 사회적 환경(필터버블,
+                히키코모리, 긱이코노미 등)을 만들고 있는지를 전체적으로 고려해야만 찾을 수
+                있습니다.
+              </p>
+              <p>
+                따라서 DE HuB LAB은 정보화된 환경(Digital Environment) 속에서 인간의
+                행동(Human Behavior)을 분석함으로써, 어떻게 해야 인간이 기술을 더 잘
+                이용할 수 있고 어떻게 해야 기술이 인간을 더 이롭게 할 것인지를 연구합니다.
+              </p>
+            </div>
           </div>
         </section>
       </div>

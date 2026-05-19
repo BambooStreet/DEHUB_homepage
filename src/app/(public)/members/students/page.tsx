@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getMembers } from "@/lib/db/queries";
 import { getRoleLabel } from "@/data/members";
 import type { Member } from "@/types";
@@ -41,13 +42,34 @@ export default async function StudentsPage() {
   );
 }
 
+function StudentPhoto({ student }: { student: Member }) {
+  if (student.image) {
+    return (
+      <div className="relative aspect-[4/3] w-full bg-secondary-50">
+        <Image
+          src={student.image}
+          alt={`${student.nameEn} (${student.name})`}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+  return (
+    <div className="aspect-[4/3] w-full bg-gradient-to-br from-primary-100 to-primary-300 flex items-center justify-center text-primary-800 font-bold text-7xl">
+      {student.name.charAt(0)}
+    </div>
+  );
+}
+
 function StudentSection({ title, students }: { title: string; students: Member[] }) {
   return (
     <section className="mb-16">
       <h2 className="text-2xl font-bold text-secondary-800 mb-8 pb-3 border-b border-secondary-200">
         {title}
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {students.map((student) => (
           <StudentCard key={student.id} student={student} />
         ))}
@@ -59,15 +81,17 @@ function StudentSection({ title, students }: { title: string; students: Member[]
 function StudentCard({ student }: { student: Member }) {
   const researchText = (student.research ?? []).join(" / ");
   return (
-    <article className="rounded-xl border border-secondary-100 bg-white p-6 hover:shadow-md transition-shadow">
-      <header className="mb-4 pb-3 border-b border-secondary-100">
-        <h3 className="text-lg font-bold text-secondary-800">
-          {student.nameEn}
-          <span className="ml-2 text-secondary-500 font-medium">{student.name}</span>
-        </h3>
-      </header>
+    <article className="rounded-xl border border-secondary-100 bg-white overflow-hidden hover:shadow-md transition-shadow flex flex-col">
+      <StudentPhoto student={student} />
+      <div className="p-6 flex-1">
+        <header className="mb-4 pb-3 border-b border-secondary-100">
+          <h3 className="text-lg font-bold text-secondary-800">
+            {student.nameEn}
+            <span className="ml-2 text-secondary-500 font-medium">{student.name}</span>
+          </h3>
+        </header>
 
-      <dl className="space-y-3 text-sm">
+        <dl className="space-y-3 text-sm">
         {researchText && (
           <div>
             <dt className="text-xs font-semibold uppercase tracking-wide text-primary-600 mb-1">
@@ -119,7 +143,8 @@ function StudentCard({ student }: { student: Member }) {
             <dd className="text-secondary-600">{student.workAt}</dd>
           </div>
         )}
-      </dl>
+        </dl>
+      </div>
     </article>
   );
 }

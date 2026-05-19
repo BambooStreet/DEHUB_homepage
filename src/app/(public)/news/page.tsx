@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
 import { getNews } from "@/lib/db/queries";
-import NewsCard from "@/components/news/NewsCard";
+import NewsList from "@/components/news/NewsList";
 
 export const metadata: Metadata = {
   title: "News",
@@ -18,11 +18,7 @@ export default async function NewsPage() {
           News
         </h1>
 
-        <div className="space-y-6">
-          {news.map((item) => (
-            <NewsCard key={item.id} item={item} />
-          ))}
-        </div>
+        <NewsList news={news} />
       </div>
     </div>
   );
