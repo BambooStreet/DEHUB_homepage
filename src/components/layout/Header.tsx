@@ -8,7 +8,13 @@ import { useState, useRef, useEffect } from "react";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Members", href: "/members" },
+  {
+    name: "Members",
+    children: [
+      { name: "Professor", href: "/members/professor" },
+      { name: "Students", href: "/members/students" },
+    ],
+  },
   {
     name: "Research",
     children: [
@@ -26,13 +32,13 @@ type NavItem = (typeof navigation)[number];
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -52,14 +58,15 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex md:gap-1">
+          <div ref={navRef} className="hidden md:flex md:gap-1">
             {navigation.map((item) => {
               if ("children" in item && item.children) {
                 const active = isDropdownActive(item);
+                const isOpen = openDropdown === item.name;
                 return (
-                  <div key={item.name} className="relative" ref={dropdownRef}>
+                  <div key={item.name} className="relative">
                     <button
-                      onClick={() => setDropdownOpen(!dropdownOpen)}
+                      onClick={() => setOpenDropdown(isOpen ? null : item.name)}
                       className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                         active
                           ? "text-primary-700 bg-primary-50"
@@ -68,7 +75,7 @@ export default function Header() {
                     >
                       {item.name}
                       <svg
-                        className={`h-4 w-4 transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
+                        className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth={2}
@@ -77,7 +84,7 @@ export default function Header() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                       </svg>
                     </button>
-                    {dropdownOpen && (
+                    {isOpen && (
                       <div className="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-secondary-100 py-1 z-50">
                         {item.children.map((child) => {
                           const childActive = pathname.startsWith(child.href);
@@ -85,7 +92,7 @@ export default function Header() {
                             <Link
                               key={child.name}
                               href={child.href}
-                              onClick={() => setDropdownOpen(false)}
+                              onClick={() => setOpenDropdown(null)}
                               className={`block px-4 py-2 text-sm transition-colors ${
                                 childActive
                                   ? "text-primary-700 bg-primary-50"

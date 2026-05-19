@@ -29,8 +29,8 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-medium text-secondary-800">주소</h3>
                   <p className="text-secondary-500 mt-1">
-                    서울특별시 OO구 OO로 123<br />
-                    OO대학교 공학관 000호
+                    (03063) 서울특별시 종로구 성균관로 25-2<br />
+                    성균관대학교 인문사회과학캠퍼스 국제관 9B307A
                   </p>
                 </div>
               </div>
@@ -41,42 +41,54 @@ export default function ContactPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                   </svg>
                 </div>
-                <div>
+                <div className="space-y-4">
                   <h3 className="font-medium text-secondary-800">이메일</h3>
-                  <a href="mailto:dehub@university.ac.kr" className="text-primary-600 hover:text-primary-700 mt-1 block">
-                    dehub@university.ac.kr
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center text-primary-600 shrink-0">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-medium text-secondary-800">전화</h3>
-                  <p className="text-secondary-500 mt-1">02-000-0000</p>
+                  <div>
+                    <p className="text-sm text-secondary-600">이대호 교수님</p>
+                    <a href="mailto:daeho.lee@skku.edu" className="text-primary-600 hover:text-primary-700 text-sm">
+                      daeho.lee@skku.edu
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-sm text-secondary-600">이해윤 랩장</p>
+                    <a href="mailto:haileysunny@naver.com" className="text-primary-600 hover:text-primary-700 text-sm">
+                      haileysunny@naver.com
+                    </a>
+                  </div>
+                  <div>
+                    <p className="text-sm text-secondary-600">장수빈 랩실 조교</p>
+                    <a href="mailto:111usion@g.skku.edu" className="text-primary-600 hover:text-primary-700 text-sm">
+                      111usion@g.skku.edu
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Map placeholder */}
           <div>
             <h2 className="text-xl font-semibold text-secondary-800 mb-6">
               찾아오는 길
             </h2>
-            <div className="aspect-[4/3] bg-secondary-50 rounded-xl border border-secondary-100 flex items-center justify-center">
-              <div className="text-center text-secondary-300">
-                <svg className="w-12 h-12 mx-auto mb-2" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
-                </svg>
-                <p className="text-sm">지도가 이곳에 표시됩니다</p>
-                <p className="text-xs mt-1">Google Maps 또는 카카오맵 임베드 가능</p>
-              </div>
+            <div className="aspect-[4/3] rounded-xl border border-secondary-100 overflow-hidden">
+              <iframe
+                src="https://maps.google.com/maps?q=%EC%84%B1%EA%B7%A0%EA%B4%80%EB%8C%80%ED%95%99%EA%B5%90%20%EC%9D%B8%EB%AC%B8%EC%82%AC%ED%9A%8C%EA%B3%BC%ED%95%99%EC%BA%A0%ED%8D%BC%EC%8A%A4%20%EA%B5%AD%EC%A0%9C%EA%B4%80&hl=ko&z=17&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="성균관대학교 인문사회과학캠퍼스 국제관 위치"
+              />
             </div>
+            <a
+              href="https://maps.google.com/?q=%EC%84%B1%EA%B7%A0%EA%B4%80%EB%8C%80%ED%95%99%EA%B5%90%20%EC%9D%B8%EB%AC%B8%EC%82%AC%ED%9A%8C%EA%B3%BC%ED%95%99%EC%BA%A0%ED%8D%BC%EC%8A%A4%20%EA%B5%AD%EC%A0%9C%EA%B4%80"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-sm text-primary-600 hover:text-primary-700"
+            >
+              Google Maps에서 크게 보기 &rarr;
+            </a>
           </div>
         </div>
       </div>
