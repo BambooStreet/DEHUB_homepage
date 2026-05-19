@@ -40,6 +40,19 @@ export default function NewMemberPage() {
           <input name="research" placeholder="HCI, AI, UX Design" className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
         </div>
         <div>
+          <label className="block text-sm font-medium text-secondary-700 mb-1">Received (one degree per line)</label>
+          <textarea
+            name="received"
+            rows={3}
+            placeholder={"Master of Science in Interaction Science\nBachelor of Data Science"}
+            className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-secondary-700 mb-1">Work at</label>
+          <input name="workAt" placeholder="(주)미디어리얼리서치" className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
+        </div>
+        <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">Homepage URL</label>
           <input name="homepage" type="url" className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
         </div>

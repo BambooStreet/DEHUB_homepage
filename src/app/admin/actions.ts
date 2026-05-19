@@ -44,6 +44,13 @@ function parseArray(value: string): string[] {
     .filter(Boolean);
 }
 
+function parseLines(value: string): string[] {
+  return value
+    .split("\n")
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
 // --- Members ---
 export async function createMemberAction(formData: FormData) {
   await requireAuth();
@@ -60,9 +67,12 @@ export async function createMemberAction(formData: FormData) {
     research: parseArray(formData.get("research") as string || ""),
     homepage: (formData.get("homepage") as string) || undefined,
     graduationYear: formData.get("graduationYear") ? Number(formData.get("graduationYear")) : undefined,
+    received: parseLines(formData.get("received") as string || ""),
+    workAt: (formData.get("workAt") as string) || undefined,
   });
   revalidatePath("/admin/members");
-  revalidatePath("/members");
+  revalidatePath("/members/students");
+  revalidatePath("/members/professor");
   redirect("/admin/members");
 }
 
@@ -80,9 +90,12 @@ export async function updateMemberAction(formData: FormData) {
     research: parseArray(formData.get("research") as string || ""),
     homepage: (formData.get("homepage") as string) || undefined,
     graduationYear: formData.get("graduationYear") ? Number(formData.get("graduationYear")) : undefined,
+    received: parseLines(formData.get("received") as string || ""),
+    workAt: (formData.get("workAt") as string) || undefined,
   });
   revalidatePath("/admin/members");
-  revalidatePath("/members");
+  revalidatePath("/members/students");
+  revalidatePath("/members/professor");
   redirect("/admin/members");
 }
 
@@ -91,7 +104,8 @@ export async function deleteMemberAction(formData: FormData) {
   const id = formData.get("id") as string;
   await mutations.deleteMember(id);
   revalidatePath("/admin/members");
-  revalidatePath("/members");
+  revalidatePath("/members/students");
+  revalidatePath("/members/professor");
   redirect("/admin/members");
 }
 

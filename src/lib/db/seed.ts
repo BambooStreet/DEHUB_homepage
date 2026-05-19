@@ -24,10 +24,11 @@ async function seed() {
   console.log("Seeding members...");
   for (const m of members) {
     await withRetry(m.id, () => sql`
-      INSERT INTO members (id, name, name_en, role, position, email, image, research, homepage, graduation_year)
+      INSERT INTO members (id, name, name_en, role, position, email, image, research, homepage, graduation_year, received, work_at)
       VALUES (${m.id}, ${m.name}, ${m.nameEn}, ${m.role}, ${m.position},
               ${m.email ?? null}, ${m.image ?? null}, ${m.research ?? []},
-              ${m.homepage ?? null}, ${m.graduationYear ?? null})
+              ${m.homepage ?? null}, ${m.graduationYear ?? null},
+              ${m.received ?? []}, ${m.workAt ?? null})
       ON CONFLICT (id) DO NOTHING
     `);
   }

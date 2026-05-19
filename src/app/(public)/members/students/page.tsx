@@ -3,7 +3,6 @@ export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import { getMembers } from "@/lib/db/queries";
 import { getRoleLabel } from "@/data/members";
-import MemberCard from "@/components/members/MemberCard";
 import type { Member } from "@/types";
 
 export const metadata: Metadata = {
@@ -31,21 +30,96 @@ export default async function StudentsPage() {
         </h1>
 
         {groups.map((group) => (
-          <section key={group.role} className="mb-12">
-            <h2 className="text-xl font-semibold text-secondary-600 mb-6 pb-2 border-b border-secondary-100">
-              {group.label}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {group.members.map((member) => (
-                <MemberCard key={member.id} member={member} />
-              ))}
-            </div>
-          </section>
+          <StudentSection key={group.role} title={group.label} students={group.members} />
         ))}
+
         {groups.length === 0 && (
           <p className="text-secondary-400 text-sm">등록된 학생이 없습니다.</p>
         )}
       </div>
     </div>
+  );
+}
+
+function StudentSection({ title, students }: { title: string; students: Member[] }) {
+  return (
+    <section className="mb-16">
+      <h2 className="text-2xl font-bold text-secondary-800 mb-8 pb-3 border-b border-secondary-200">
+        {title}
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {students.map((student) => (
+          <StudentCard key={student.id} student={student} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function StudentCard({ student }: { student: Member }) {
+  const researchText = (student.research ?? []).join(" / ");
+  return (
+    <article className="rounded-xl border border-secondary-100 bg-white p-6 hover:shadow-md transition-shadow">
+      <header className="mb-4 pb-3 border-b border-secondary-100">
+        <h3 className="text-lg font-bold text-secondary-800">
+          {student.nameEn}
+          <span className="ml-2 text-secondary-500 font-medium">{student.name}</span>
+        </h3>
+      </header>
+
+      <dl className="space-y-3 text-sm">
+        {researchText && (
+          <div>
+            <dt className="text-xs font-semibold uppercase tracking-wide text-primary-600 mb-1">
+              Research Interest
+            </dt>
+            <dd className="text-secondary-600 leading-relaxed">{researchText}</dd>
+          </div>
+        )}
+
+        {student.email && (
+          <div>
+            <dt className="text-xs font-semibold uppercase tracking-wide text-primary-600 mb-1">
+              Email
+            </dt>
+            <dd>
+              <a
+                href={`mailto:${student.email}`}
+                className="text-primary-600 hover:text-primary-700 break-all"
+              >
+                {student.email}
+              </a>
+            </dd>
+          </div>
+        )}
+
+        {student.received && student.received.length > 0 && (
+          <div>
+            <dt className="text-xs font-semibold uppercase tracking-wide text-primary-600 mb-1">
+              Received
+            </dt>
+            <dd>
+              <ul className="space-y-1 text-secondary-600 leading-relaxed">
+                {student.received.map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-primary-400 shrink-0">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        )}
+
+        {student.workAt && (
+          <div>
+            <dt className="text-xs font-semibold uppercase tracking-wide text-primary-600 mb-1">
+              Work at
+            </dt>
+            <dd className="text-secondary-600">{student.workAt}</dd>
+          </div>
+        )}
+      </dl>
+    </article>
   );
 }

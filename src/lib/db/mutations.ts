@@ -5,10 +5,11 @@ import type { Member, Publication, NewsItem, Project, Award } from "@/types";
 export async function createMember(data: Omit<Member, "id"> & { id: string }) {
   const sql = getDb();
   await sql`
-    INSERT INTO members (id, name, name_en, role, position, email, image, research, homepage, graduation_year)
+    INSERT INTO members (id, name, name_en, role, position, email, image, research, homepage, graduation_year, received, work_at)
     VALUES (${data.id}, ${data.name}, ${data.nameEn}, ${data.role}, ${data.position},
             ${data.email ?? null}, ${data.image ?? null}, ${data.research ?? []},
-            ${data.homepage ?? null}, ${data.graduationYear ?? null})
+            ${data.homepage ?? null}, ${data.graduationYear ?? null},
+            ${data.received ?? []}, ${data.workAt ?? null})
   `;
 }
 
@@ -25,6 +26,8 @@ export async function updateMember(id: string, data: Partial<Member>) {
       research = COALESCE(${data.research ?? null}, research),
       homepage = ${data.homepage ?? null},
       graduation_year = ${data.graduationYear ?? null},
+      received = COALESCE(${data.received ?? null}, received),
+      work_at = ${data.workAt ?? null},
       updated_at = NOW()
     WHERE id = ${id}
   `;

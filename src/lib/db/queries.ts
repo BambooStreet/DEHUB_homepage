@@ -11,7 +11,7 @@ function toDateString(value: unknown): string {
 export async function getMembers(): Promise<Member[]> {
   const sql = getDb();
   const rows = await sql`
-    SELECT id, name, name_en, role, position, email, image, research, homepage, graduation_year
+    SELECT id, name, name_en, role, position, email, image, research, homepage, graduation_year, received, work_at
     FROM members ORDER BY sort_order, created_at
   `;
   return rows.map(mapMember);
@@ -20,7 +20,7 @@ export async function getMembers(): Promise<Member[]> {
 export async function getMemberById(id: string): Promise<Member | null> {
   const sql = getDb();
   const rows = await sql`
-    SELECT id, name, name_en, role, position, email, image, research, homepage, graduation_year
+    SELECT id, name, name_en, role, position, email, image, research, homepage, graduation_year, received, work_at
     FROM members WHERE id = ${id}
   `;
   return rows.length > 0 ? mapMember(rows[0]) : null;
@@ -38,6 +38,8 @@ function mapMember(row: Record<string, unknown>): Member {
     research: (row.research as string[]) || [],
     homepage: (row.homepage as string) || undefined,
     graduationYear: (row.graduation_year as number) || undefined,
+    received: (row.received as string[]) || [],
+    workAt: (row.work_at as string) || undefined,
   };
 }
 

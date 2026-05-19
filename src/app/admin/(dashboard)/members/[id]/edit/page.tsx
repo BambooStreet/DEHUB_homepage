@@ -52,6 +52,19 @@ export default async function EditMemberPage({
           <input name="research" defaultValue={(member.research || []).join(", ")} className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
         </div>
         <div>
+          <label className="block text-sm font-medium text-secondary-700 mb-1">Received (one degree per line)</label>
+          <textarea
+            name="received"
+            rows={3}
+            defaultValue={(member.received || []).join("\n")}
+            className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-secondary-700 mb-1">Work at</label>
+          <input name="workAt" defaultValue={member.workAt || ""} className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
+        </div>
+        <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">Homepage URL</label>
           <input name="homepage" type="url" defaultValue={member.homepage || ""} className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
         </div>

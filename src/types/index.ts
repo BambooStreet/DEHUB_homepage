@@ -9,6 +9,8 @@ export interface Member {
   research?: string[];
   homepage?: string;
   graduationYear?: number;
+  received?: string[];
+  workAt?: string;
 }
 
 export interface Publication {

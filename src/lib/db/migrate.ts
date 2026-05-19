@@ -19,6 +19,21 @@ async function migrate() {
   console.log("Wiping existing publications so the new seed can take over...");
   await sql`TRUNCATE publications`;
 
+  console.log("Adding received column to members if missing...");
+  await sql`
+    ALTER TABLE members
+      ADD COLUMN IF NOT EXISTS received TEXT[] NOT NULL DEFAULT '{}'
+  `;
+
+  console.log("Adding work_at column to members if missing...");
+  await sql`
+    ALTER TABLE members
+      ADD COLUMN IF NOT EXISTS work_at TEXT
+  `;
+
+  console.log("Wiping existing members so the new seed can take over...");
+  await sql`TRUNCATE members`;
+
   console.log("Migration complete. Run `npm run db:seed` next.");
 }
 
