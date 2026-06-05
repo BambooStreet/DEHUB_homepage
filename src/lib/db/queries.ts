@@ -117,6 +117,21 @@ export async function getProjects(): Promise<Project[]> {
   return rows.map(mapProject);
 }
 
+export async function getPartnerLogoLibrary(): Promise<Array<{ partner: string; logoUrl: string }>> {
+  const sql = getDb();
+  const rows = await sql`
+    SELECT DISTINCT ON (LOWER(TRIM(partner))) partner, partner_logo
+    FROM projects
+    WHERE partner IS NOT NULL AND TRIM(partner) <> ''
+      AND partner_logo IS NOT NULL AND partner_logo <> ''
+    ORDER BY LOWER(TRIM(partner)), created_at DESC
+  `;
+  return rows.map((r) => ({
+    partner: r.partner as string,
+    logoUrl: r.partner_logo as string,
+  }));
+}
+
 export async function getProjectById(id: string): Promise<Project | null> {
   const sql = getDb();
   const rows = await sql`

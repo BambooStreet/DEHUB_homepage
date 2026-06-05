@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
-import { getProjectById } from "@/lib/db/queries";
+import { getPartnerLogoLibrary, getProjectById } from "@/lib/db/queries";
 import { updateProjectAction } from "../../../../actions";
+import { FileInput } from "../../../../_components/FileInput";
+import { PartnerLogoField } from "../../../../_components/PartnerLogoField";
 
 export default async function EditProjectPage({
   params,
@@ -8,7 +10,10 @@ export default async function EditProjectPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const project = await getProjectById(id);
+  const [project, library] = await Promise.all([
+    getProjectById(id),
+    getPartnerLogoLibrary(),
+  ]);
   if (!project) notFound();
 
   return (
@@ -17,22 +22,15 @@ export default async function EditProjectPage({
       <form action={updateProjectAction} className="max-w-2xl bg-white rounded-lg shadow p-6 space-y-4">
         <input type="hidden" name="id" value={project.id} />
         <input type="hidden" name="existingImage" value={project.image || ""} />
-        <input type="hidden" name="existingPartnerLogo" value={project.partnerLogo || ""} />
         <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">제목 (Title)</label>
           <input name="title" required defaultValue={project.title} className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-secondary-700 mb-1">협업 기관 (Partner)</label>
-          <input name="partner" defaultValue={project.partner || ""} placeholder="삼성전자 / Naver / KAKAO 등" className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
-          <p className="text-xs text-secondary-400 mt-1">제목 옆에 “with ___” 형태로 표시됩니다.</p>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-secondary-700 mb-1">파트너 로고 (선택)</label>
-          {project.partnerLogo && <p className="text-xs text-secondary-400 mb-1">Current: {project.partnerLogo}</p>}
-          <input name="partnerLogo" type="file" accept="image/*" className="w-full text-sm" />
-          <p className="text-xs text-secondary-400 mt-1">없으면 비워두세요. 텍스트만 표시됩니다.</p>
-        </div>
+        <PartnerLogoField
+          library={library}
+          initialPartner={project.partner}
+          initialLogoUrl={project.partnerLogo}
+        />
         <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">부제 (Subtitle)</label>
           <input name="subtitle" defaultValue={project.subtitle || ""} placeholder="예: 보복 심리와 라이브 커머스" className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
@@ -66,8 +64,7 @@ export default async function EditProjectPage({
         </div>
         <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">대표 이미지 (선택)</label>
-          {project.image && <p className="text-xs text-secondary-400 mb-1">Current: {project.image}</p>}
-          <input name="image" type="file" accept="image/*" className="w-full text-sm" />
+          <FileInput name="image" label="이미지 업로드" existingUrl={project.image} />
         </div>
         <div className="flex gap-3 pt-2">
           <button type="submit" className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700">Save</button>

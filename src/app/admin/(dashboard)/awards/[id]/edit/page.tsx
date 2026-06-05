@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getAwardById } from "@/lib/db/queries";
 import { updateAwardAction } from "../../../../actions";
+import { FileInput } from "../../../../_components/FileInput";
 
 export default async function EditAwardPage({
   params,
@@ -37,8 +38,7 @@ export default async function EditAwardPage({
         </div>
         <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">Image</label>
-          {award.image && <p className="text-xs text-secondary-400 mb-1">Current: {award.image}</p>}
-          <input name="image" type="file" accept="image/*" className="w-full text-sm" />
+          <FileInput name="image" label="이미지 업로드" existingUrl={award.image} />
         </div>
         <div className="flex gap-3 pt-2">
           <button type="submit" className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700">Save</button>

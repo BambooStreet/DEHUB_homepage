@@ -25,35 +25,23 @@ export default async function ProjectsPage() {
                 key={project.id}
                 className="p-6 md:p-8 bg-white rounded-xl border border-secondary-100 hover:shadow-md transition-shadow"
               >
-                <header className="flex items-start justify-between gap-4">
-                  <div className="min-w-0">
-                    <h2 className="text-xl md:text-2xl font-semibold text-secondary-800">
-                      {project.title}
-                    </h2>
-                    {project.partner && (
-                      <div className="mt-1 flex items-center gap-2 text-sm text-secondary-500">
-                        <span>with {project.partner}</span>
-                        {project.partnerLogo && (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img
-                            src={project.partnerLogo}
-                            alt={project.partner}
-                            className="h-5 w-auto object-contain"
-                          />
-                        )}
-                      </div>
-                    )}
-                    {project.subtitle && (
-                      <p className="mt-2 text-secondary-600">{project.subtitle}</p>
-                    )}
-                  </div>
-                  <span className={`shrink-0 px-2 py-1 text-xs font-medium rounded ${
-                    project.status === "active" ? "bg-green-100 text-green-700" :
-                    project.status === "upcoming" ? "bg-blue-100 text-blue-700" :
-                    "bg-secondary-100 text-secondary-600"
-                  }`}>
-                    {project.status}
-                  </span>
+                <header>
+                  {project.partnerLogo && (
+                    <div className="mb-5 flex h-10 w-36 items-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={project.partnerLogo}
+                        alt={project.partner || ""}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                  )}
+                  <h2 className="text-xl md:text-2xl font-semibold text-secondary-800">
+                    {project.title}
+                  </h2>
+                  {project.subtitle && (
+                    <p className="mt-2 text-secondary-600">{project.subtitle}</p>
+                  )}
                 </header>
 
                 {project.purpose && (

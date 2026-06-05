@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getMemberById } from "@/lib/db/queries";
 import { updateMemberAction } from "../../../../actions";
+import { FileInput } from "../../../../_components/FileInput";
 
 export default async function EditMemberPage({
   params,
@@ -74,8 +75,7 @@ export default async function EditMemberPage({
         </div>
         <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">Photo</label>
-          {member.image && <p className="text-xs text-secondary-400 mb-1">Current: {member.image}</p>}
-          <input name="image" type="file" accept="image/*" className="w-full text-sm" />
+          <FileInput name="image" label="사진 업로드" existingUrl={member.image} />
         </div>
         <div className="flex gap-3 pt-2">
           <button type="submit" className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700">

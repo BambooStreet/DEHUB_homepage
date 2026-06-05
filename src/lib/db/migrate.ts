@@ -191,6 +191,114 @@ async function migrate() {
   }
 
   console.log(`Inserted ${pastProjects.length} past projects.`);
+
+  console.log("Inserting past awards (idempotent via ON CONFLICT)...");
+  const pastAwards: Array<{
+    id: string;
+    title: string;
+    recipient: string;
+    date: string;
+    description: string;
+    sort_order: number;
+  }> = [
+    {
+      id: "award-2026-parkhyerin",
+      title: "ICOAIMLAT-26 Best Paper Presentation Award",
+      recipient: "박혜린",
+      date: "2026-01-01",
+      description:
+        "Mitigating AI hallucinations: Fostering Critical Evaluation of AI-Generated Information Through Comment Features",
+      sort_order: 1,
+    },
+    {
+      id: "award-2022-parknahyun",
+      title: "SK mySUNI Creative Challenge 2022 [전시/데모 부문] 우수상",
+      recipient: "박나현",
+      date: "2022-01-01",
+      description: "메타버스를 활용한 사회문제 해결 아이디어의 사용자 경험 설계",
+      sort_order: 2,
+    },
+    {
+      id: "award-2021-yongkyungjin",
+      title: "정보통신정책학회 가을철 정기학술대회",
+      recipient: "용경진",
+      date: "2021-01-01",
+      description: "사용자가 원하는 인터넷서비스의 투명성에 관한 연구",
+      sort_order: 3,
+    },
+    {
+      id: "award-2021-parkinyoung",
+      title: "이석한 정보지능연구대상",
+      recipient: "박인영",
+      date: "2021-01-01",
+      description:
+        "정보통신대학 & 소프트웨어대학에서 연구실적이 우수한 박사졸업생에게 수여",
+      sort_order: 4,
+    },
+    {
+      id: "award-2020-leejieon",
+      title: "정보통신정책학회 가을철 정기학술대회",
+      recipient: "이지언",
+      date: "2020-01-01",
+      description: "AI 심리상담 챗봇과의 라포 형성이 자기 노출에 미치는 영향",
+      sort_order: 5,
+    },
+    {
+      id: "award-2020-junghuiyun",
+      title: "금융감독원 보이스피싱 피해예방 논문공모전",
+      recipient: "정희윤",
+      date: "2020-01-01",
+      description:
+        "보이스피싱 피해예방을 위한 요청에 의한 송금 시 수취인 확인 서비스",
+      sort_order: 6,
+    },
+    {
+      id: "award-2020-seojaeeun",
+      title: "CESE Fellowship 성과발표회 우수상",
+      recipient: "서재은",
+      date: "2020-01-01",
+      description: "VUI 개선을 통한 시각장애인의 온라인 쇼핑 사용성 연구",
+      sort_order: 7,
+    },
+    {
+      id: "award-2018-yujongsoo-leejieon",
+      title: "한국미디어경영학회 우수논문상",
+      recipient: "유종수, 이지언",
+      date: "2018-01-01",
+      description:
+        "OTT 서비스 이용의 몰아보기 및 잘라보기 시청 방식: 이용 동기와 개인 성향, 중독의 조절효과 검증",
+      sort_order: 8,
+    },
+    {
+      id: "award-2017-choikiseok",
+      title:
+        "Best PAPER of the Business, Economic, Social Science & Humanities",
+      recipient: "최기석",
+      date: "2017-01-01",
+      description: "How Online Game Affects To The Learning Immersion?",
+      sort_order: 9,
+    },
+    {
+      id: "award-2016-leejiyoon",
+      title: "한국미디어경영학회 우수논문상",
+      recipient: "이지윤",
+      date: "2016-01-01",
+      description:
+        "빅데이터 기반 네트워크 분석과 구조방정식 모형을 활용한 네이버 O2O 서비스의 소비자 수용의도 분석 연구: e-Loyalty와 offline-Loyalty 비교 분석.",
+      sort_order: 10,
+    },
+  ];
+
+  for (const a of pastAwards) {
+    await sql`
+      INSERT INTO awards (id, title, recipient, date, description, sort_order)
+      VALUES (${a.id}, ${a.title}, ${a.recipient}, ${a.date}, ${a.description}, ${a.sort_order})
+      ON CONFLICT (id) DO NOTHING
+    `;
+  }
+
+  console.log(`Inserted ${pastAwards.length} past awards.`);
+
   console.log("Migration complete. Run `npm run db:seed` next.");
 }
 

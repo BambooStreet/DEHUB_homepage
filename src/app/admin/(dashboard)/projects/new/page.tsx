@@ -1,6 +1,10 @@
 import { createProjectAction } from "../../../actions";
+import { FileInput } from "../../../_components/FileInput";
+import { PartnerLogoField } from "../../../_components/PartnerLogoField";
+import { getPartnerLogoLibrary } from "@/lib/db/queries";
 
-export default function NewProjectPage() {
+export default async function NewProjectPage() {
+  const library = await getPartnerLogoLibrary();
   return (
     <div>
       <h1 className="text-2xl font-bold text-secondary-800 mb-6">Add Project</h1>
@@ -9,16 +13,7 @@ export default function NewProjectPage() {
           <label className="block text-sm font-medium text-secondary-700 mb-1">제목 (Title)</label>
           <input name="title" required className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
         </div>
-        <div>
-          <label className="block text-sm font-medium text-secondary-700 mb-1">협업 기관 (Partner)</label>
-          <input name="partner" placeholder="삼성전자 / Naver / KAKAO 등" className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
-          <p className="text-xs text-secondary-400 mt-1">제목 옆에 “with ___” 형태로 표시됩니다.</p>
-        </div>
-        <div>
-          <label className="block text-sm font-medium text-secondary-700 mb-1">파트너 로고 (선택)</label>
-          <input name="partnerLogo" type="file" accept="image/*" className="w-full text-sm" />
-          <p className="text-xs text-secondary-400 mt-1">없으면 비워두세요. 텍스트만 표시됩니다.</p>
-        </div>
+        <PartnerLogoField library={library} />
         <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">부제 (Subtitle)</label>
           <input name="subtitle" placeholder="예: 보복 심리와 라이브 커머스" className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm" />
@@ -52,7 +47,7 @@ export default function NewProjectPage() {
         </div>
         <div>
           <label className="block text-sm font-medium text-secondary-700 mb-1">대표 이미지 (선택)</label>
-          <input name="image" type="file" accept="image/*" className="w-full text-sm" />
+          <FileInput name="image" label="이미지 업로드" />
         </div>
         <div className="flex gap-3 pt-2">
           <button type="submit" className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-md hover:bg-primary-700">Create</button>
