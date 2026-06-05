@@ -24,10 +24,19 @@ const navigation = [
     ],
   },
   { name: "News", href: "/news" },
+  { name: "Notice", href: "/notice" },
   { name: "Contact", href: "/contact" },
 ];
 
 type NavItem = (typeof navigation)[number];
+
+function isItemActive(href: string, pathname: string): boolean {
+  if (href === "/") return pathname === "/";
+  // News and Notice must be exact-prefix matched so they don't both light up
+  if (href === "/news") return pathname === "/news" || pathname.startsWith("/news/");
+  if (href === "/notice") return pathname === "/notice" || pathname.startsWith("/notice/");
+  return pathname.startsWith(href);
+}
 
 export default function Header() {
   const pathname = usePathname();
@@ -109,10 +118,7 @@ export default function Header() {
                 );
               }
 
-              const isActive =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href!);
+              const isActive = isItemActive(item.href!, pathname);
               return (
                 <Link
                   key={item.name}
@@ -184,10 +190,7 @@ export default function Header() {
                 );
               }
 
-              const isActive =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href!);
+              const isActive = isItemActive(item.href!, pathname);
               return (
                 <Link
                   key={item.name}

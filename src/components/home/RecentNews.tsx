@@ -14,13 +14,13 @@ export default async function RecentNews() {
           <Column
             title="Latest News"
             items={recentNews}
-            viewAllHref="/news?tab=news"
+            viewAllHref="/news"
             emptyText="아직 등록된 소식이 없습니다."
           />
           <Column
             title="Notice"
             items={recentNotices}
-            viewAllHref="/news?tab=notice"
+            viewAllHref="/notice"
             emptyText="아직 등록된 공지가 없습니다."
           />
         </div>

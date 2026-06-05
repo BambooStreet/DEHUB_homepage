@@ -102,7 +102,7 @@ function mapNews(row: Record<string, unknown>): NewsItem {
     title: row.title as string,
     date: toDateString(row.date),
     content: row.content as string,
-    category: row.category as NewsItem["category"],
+    category: (row.category as NewsItem["category"]) || undefined,
     image: (row.image as string) || undefined,
   };
 }

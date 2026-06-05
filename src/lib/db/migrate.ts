@@ -28,6 +28,9 @@ async function migrate() {
       ADD COLUMN IF NOT EXISTS work_at TEXT
   `;
 
+  console.log("Making news.category nullable...");
+  await sql`ALTER TABLE news ALTER COLUMN category DROP NOT NULL`;
+
   console.log("Adding partner column to projects if missing...");
   await sql`ALTER TABLE projects ADD COLUMN IF NOT EXISTS partner TEXT`;
 

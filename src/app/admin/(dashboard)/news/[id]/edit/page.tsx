@@ -29,7 +29,8 @@ export default async function EditNewsPage({
           </div>
           <div>
             <label className="block text-sm font-medium text-secondary-700 mb-1">Category</label>
-            <select name="category" required defaultValue={news.category} className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm">
+            <select name="category" defaultValue={news.category || ""} className="w-full px-3 py-2 border border-secondary-300 rounded-md text-sm">
+              <option value="">(분류 없음)</option>
               <option value="announcement">Announcement</option>
               <option value="award">Award</option>
               <option value="event">Event</option>

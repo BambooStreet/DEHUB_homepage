@@ -31,7 +31,7 @@ export interface NewsItem {
   title: string;
   date: string;
   content: string;
-  category: "announcement" | "award" | "event" | "media";
+  category?: "announcement" | "award" | "event" | "media";
   image?: string;
 }
 

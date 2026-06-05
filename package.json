@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "db:seed": "npx tsx --env-file=.env.local src/lib/db/seed.ts",
-    "db:migrate": "npx tsx --env-file=.env.local src/lib/db/migrate.ts"
+    "db:migrate": "npx tsx --env-file=.env.local src/lib/db/migrate.ts",
+    "import:news": "npx tsx --env-file=.env.local scripts/import_crawled.ts news",
+    "import:notice": "npx tsx --env-file=.env.local scripts/import_crawled.ts notice"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",

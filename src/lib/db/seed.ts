@@ -1,7 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 import { members } from "../../data/members";
 import { publications } from "../../data/publications";
-import { news } from "../../data/news";
 
 const sql = neon(process.env.DATABASE_URL!);
 
@@ -40,16 +39,6 @@ async function seed() {
       VALUES (${p.id}, ${p.title}, ${p.authors}, ${p.venue}, ${p.year},
               ${p.type}, ${p.region}, ${p.indexing ?? null},
               ${p.link ?? null}, ${p.doi ?? null})
-      ON CONFLICT (id) DO NOTHING
-    `);
-  }
-
-  console.log("Seeding news...");
-  for (const n of news) {
-    await withRetry(n.id, () => sql`
-      INSERT INTO news (id, title, date, content, category, image)
-      VALUES (${n.id}, ${n.title}, ${n.date}, ${n.content},
-              ${n.category}, ${n.image ?? null})
       ON CONFLICT (id) DO NOTHING
     `);
   }

@@ -35,7 +35,7 @@ CREATE TABLE news (
   title TEXT NOT NULL,
   date DATE NOT NULL,
   content TEXT NOT NULL,
-  category TEXT NOT NULL CHECK (category IN ('announcement','award','event','media')),
+  category TEXT CHECK (category IN ('announcement','award','event','media')),
   image TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()

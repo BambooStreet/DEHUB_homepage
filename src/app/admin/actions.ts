@@ -122,13 +122,18 @@ export async function createNewsAction(formData: FormData) {
     title: formData.get("title") as string,
     date: formData.get("date") as string,
     content: formData.get("content") as string,
-    category: formData.get("category") as "announcement" | "award" | "event" | "media",
+    category: (formData.get("category") as string)
+      ? (formData.get("category") as "announcement" | "award" | "event" | "media")
+      : undefined,
     image,
   });
   revalidatePath("/admin/news");
+  revalidatePath("/admin/notice");
   revalidatePath("/news");
+  revalidatePath("/notice");
   revalidatePath("/");
-  redirect("/admin/news");
+  const target = (formData.get("redirectTo") as string) || "/admin/news";
+  redirect(target);
 }
 
 export async function updateNewsAction(formData: FormData) {
@@ -139,13 +144,18 @@ export async function updateNewsAction(formData: FormData) {
     title: formData.get("title") as string,
     date: formData.get("date") as string,
     content: formData.get("content") as string,
-    category: formData.get("category") as "announcement" | "award" | "event" | "media",
+    category: (formData.get("category") as string)
+      ? (formData.get("category") as "announcement" | "award" | "event" | "media")
+      : undefined,
     image,
   });
   revalidatePath("/admin/news");
+  revalidatePath("/admin/notice");
   revalidatePath("/news");
+  revalidatePath("/notice");
   revalidatePath("/");
-  redirect("/admin/news");
+  const target = (formData.get("redirectTo") as string) || "/admin/news";
+  redirect(target);
 }
 
 export async function deleteNewsAction(formData: FormData) {
@@ -153,9 +163,12 @@ export async function deleteNewsAction(formData: FormData) {
   const id = formData.get("id") as string;
   await mutations.deleteNews(id);
   revalidatePath("/admin/news");
+  revalidatePath("/admin/notice");
   revalidatePath("/news");
+  revalidatePath("/notice");
   revalidatePath("/");
-  redirect("/admin/news");
+  const target = (formData.get("redirectTo") as string) || "/admin/news";
+  redirect(target);
 }
 
 // --- Publications ---

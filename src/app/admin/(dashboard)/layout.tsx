@@ -7,6 +7,7 @@ const adminNav = [
   { name: "Dashboard", href: "/admin" },
   { name: "Members", href: "/admin/members" },
   { name: "News", href: "/admin/news" },
+  { name: "Notice", href: "/admin/notice" },
   { name: "Publications", href: "/admin/publications" },
   { name: "Projects", href: "/admin/projects" },
   { name: "Awards", href: "/admin/awards" },

@@ -5,10 +5,10 @@ import { getNews } from "@/lib/db/queries";
 import PostsListing from "@/components/news/PostsListing";
 
 export const metadata: Metadata = {
-  title: "News",
+  title: "Notice",
 };
 
-export default async function NewsPage({
+export default async function NoticePage({
   searchParams,
 }: {
   searchParams: Promise<{ page?: string }>;
@@ -18,7 +18,7 @@ export default async function NewsPage({
   const page = Number.isFinite(rawPage) && rawPage >= 1 ? Math.floor(rawPage) : 1;
 
   const all = await getNews();
-  const items = all.filter((n) => n.category !== "announcement");
+  const items = all.filter((n) => n.category === "announcement");
 
-  return <PostsListing title="News" basePath="/news" items={items} page={page} />;
+  return <PostsListing title="Notice" basePath="/notice" items={items} page={page} />;
 }

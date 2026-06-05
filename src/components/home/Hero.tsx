@@ -9,7 +9,7 @@ export default function Hero() {
           <Image src="/images/logo9.gif" alt="DEHUB" width={200} height={65} className="h-16 md:h-30 w-auto mb-6" unoptimized />
 
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-secondary-800">
-            Welcome to <span className="text-primary-500">DE HuB LAB</span>
+            Welcome to <span className="text-primary-500">DEHUB LAB</span>
           </h1>
 
           <p className="mt-6 text-lg text-secondary-400 leading-relaxed max-w-xl">

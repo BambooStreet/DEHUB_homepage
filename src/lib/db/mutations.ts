@@ -78,7 +78,7 @@ export async function createNews(data: NewsItem) {
   await sql`
     INSERT INTO news (id, title, date, content, category, image)
     VALUES (${data.id}, ${data.title}, ${data.date}, ${data.content},
-            ${data.category}, ${data.image ?? null})
+            ${data.category ?? null}, ${data.image ?? null})
   `;
 }
 

@@ -1,22 +1,27 @@
 import Link from "next/link";
 import Image from "next/image";
-import { NewsItem } from "@/types";
+import type { NewsItem } from "@/types";
 
-const categoryLabels: Record<NewsItem["category"], string> = {
+const categoryLabels: Record<NonNullable<NewsItem["category"]>, string> = {
   announcement: "공지",
   award: "수상",
   event: "행사",
   media: "미디어",
 };
 
-const categoryColors: Record<NewsItem["category"], string> = {
+const categoryColors: Record<NonNullable<NewsItem["category"]>, string> = {
   announcement: "bg-secondary-100 text-secondary-600",
   award: "bg-primary-50 text-primary-700",
   event: "bg-emerald-50 text-emerald-700",
   media: "bg-purple-50 text-purple-700",
 };
 
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 export default function NewsCard({ item }: { item: NewsItem }) {
+  const excerpt = stripHtml(item.content);
   return (
     <Link href={`/news/${item.id}`}>
       <article className="p-6 bg-white rounded-xl border border-secondary-100 hover:border-primary-300 hover:shadow-sm transition-all flex gap-5">
@@ -27,13 +32,15 @@ export default function NewsCard({ item }: { item: NewsItem }) {
         )}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${categoryColors[item.category]}`}>
-              {categoryLabels[item.category]}
-            </span>
+            {item.category && (
+              <span className={`px-2 py-0.5 text-xs font-medium rounded-full ${categoryColors[item.category]}`}>
+                {categoryLabels[item.category]}
+              </span>
+            )}
             <span className="text-sm text-secondary-300">{item.date}</span>
           </div>
           <h3 className="text-lg font-semibold text-secondary-800 mb-1">{item.title}</h3>
-          <p className="text-sm text-secondary-500 leading-relaxed line-clamp-2">{item.content}</p>
+          <p className="text-sm text-secondary-500 leading-relaxed line-clamp-2">{excerpt}</p>
         </div>
       </article>
     </Link>
