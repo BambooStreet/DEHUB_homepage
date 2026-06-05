@@ -44,6 +44,10 @@ CREATE TABLE news (
 CREATE TABLE projects (
   id TEXT PRIMARY KEY,
   title TEXT NOT NULL,
+  partner TEXT,
+  partner_logo TEXT,
+  subtitle TEXT,
+  purpose TEXT,
   description TEXT NOT NULL,
   period TEXT NOT NULL,
   status TEXT NOT NULL CHECK (status IN ('active','completed','upcoming')),

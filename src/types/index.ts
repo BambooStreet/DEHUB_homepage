@@ -38,6 +38,10 @@ export interface NewsItem {
 export interface Project {
   id: string;
   title: string;
+  partner?: string;
+  partnerLogo?: string;
+  subtitle?: string;
+  purpose?: string;
   description: string;
   period: string;
   status: "active" | "completed" | "upcoming";

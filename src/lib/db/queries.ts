@@ -111,7 +111,7 @@ function mapNews(row: Record<string, unknown>): NewsItem {
 export async function getProjects(): Promise<Project[]> {
   const sql = getDb();
   const rows = await sql`
-    SELECT id, title, description, period, status, tags, image
+    SELECT id, title, partner, partner_logo, subtitle, purpose, description, period, status, tags, image
     FROM projects ORDER BY sort_order, created_at DESC
   `;
   return rows.map(mapProject);
@@ -120,7 +120,7 @@ export async function getProjects(): Promise<Project[]> {
 export async function getProjectById(id: string): Promise<Project | null> {
   const sql = getDb();
   const rows = await sql`
-    SELECT id, title, description, period, status, tags, image
+    SELECT id, title, partner, partner_logo, subtitle, purpose, description, period, status, tags, image
     FROM projects WHERE id = ${id}
   `;
   return rows.length > 0 ? mapProject(rows[0]) : null;
@@ -130,6 +130,10 @@ function mapProject(row: Record<string, unknown>): Project {
   return {
     id: row.id as string,
     title: row.title as string,
+    partner: (row.partner as string) || undefined,
+    partnerLogo: (row.partner_logo as string) || undefined,
+    subtitle: (row.subtitle as string) || undefined,
+    purpose: (row.purpose as string) || undefined,
     description: row.description as string,
     period: row.period as string,
     status: row.status as Project["status"],

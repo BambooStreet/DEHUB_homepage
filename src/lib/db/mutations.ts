@@ -105,8 +105,9 @@ export async function deleteNews(id: string) {
 export async function createProject(data: Project) {
   const sql = getDb();
   await sql`
-    INSERT INTO projects (id, title, description, period, status, tags, image)
-    VALUES (${data.id}, ${data.title}, ${data.description}, ${data.period},
+    INSERT INTO projects (id, title, partner, partner_logo, subtitle, purpose, description, period, status, tags, image)
+    VALUES (${data.id}, ${data.title}, ${data.partner ?? null}, ${data.partnerLogo ?? null},
+            ${data.subtitle ?? null}, ${data.purpose ?? null}, ${data.description}, ${data.period},
             ${data.status}, ${data.tags}, ${data.image ?? null})
   `;
 }
@@ -116,6 +117,10 @@ export async function updateProject(id: string, data: Partial<Project>) {
   await sql`
     UPDATE projects SET
       title = COALESCE(${data.title ?? null}, title),
+      partner = ${data.partner ?? null},
+      partner_logo = ${data.partnerLogo ?? null},
+      subtitle = ${data.subtitle ?? null},
+      purpose = ${data.purpose ?? null},
       description = COALESCE(${data.description ?? null}, description),
       period = COALESCE(${data.period ?? null}, period),
       status = COALESCE(${data.status ?? null}, status),

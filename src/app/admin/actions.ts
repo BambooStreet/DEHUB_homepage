@@ -27,13 +27,16 @@ async function requireAuth() {
   if (!(await verifyAuth())) redirect("/admin/login");
 }
 
-async function handleImage(formData: FormData, fieldName = "image"): Promise<string | undefined> {
+async function handleImage(
+  formData: FormData,
+  fieldName = "image",
+  existingFieldName = "existingImage",
+): Promise<string | undefined> {
   const file = formData.get(fieldName) as File | null;
   if (file && file.size > 0) {
     return await uploadImage(file);
   }
-  // Keep existing image if provided as hidden field
-  const existing = formData.get("existingImage") as string | null;
+  const existing = formData.get(existingFieldName) as string | null;
   return existing || undefined;
 }
 
@@ -208,13 +211,23 @@ export async function deletePublicationAction(formData: FormData) {
 }
 
 // --- Projects ---
+function optionalString(formData: FormData, key: string): string | undefined {
+  const value = (formData.get(key) as string | null)?.trim();
+  return value ? value : undefined;
+}
+
 export async function createProjectAction(formData: FormData) {
   await requireAuth();
   const image = await handleImage(formData);
+  const partnerLogo = await handleImage(formData, "partnerLogo", "existingPartnerLogo");
   const id = crypto.randomUUID();
   await mutations.createProject({
     id,
     title: formData.get("title") as string,
+    partner: optionalString(formData, "partner"),
+    partnerLogo,
+    subtitle: optionalString(formData, "subtitle"),
+    purpose: optionalString(formData, "purpose"),
     description: formData.get("description") as string,
     period: formData.get("period") as string,
     status: formData.get("status") as "active" | "completed" | "upcoming",
@@ -230,8 +243,13 @@ export async function updateProjectAction(formData: FormData) {
   await requireAuth();
   const id = formData.get("id") as string;
   const image = await handleImage(formData);
+  const partnerLogo = await handleImage(formData, "partnerLogo", "existingPartnerLogo");
   await mutations.updateProject(id, {
     title: formData.get("title") as string,
+    partner: optionalString(formData, "partner"),
+    partnerLogo,
+    subtitle: optionalString(formData, "subtitle"),
+    purpose: optionalString(formData, "purpose"),
     description: formData.get("description") as string,
     period: formData.get("period") as string,
     status: formData.get("status") as "active" | "completed" | "upcoming",
