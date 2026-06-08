@@ -14,11 +14,32 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "DEHUB Laboratory",
-    template: "%s | DEHUB Lab",
+    default: "디허브랩 (DEHuB Lab) - 성균관대학교",
+    template: "%s | 디허브랩 (DEHuB Lab)",
   },
   description:
-    "Welcome to DE HuB LAB 연구라는, 미지의 세계에서 진리를 찾아 헤매는 모험 그 모험을 함께 할 사람들을 찾습니다",
+    "성균관대학교 디허브랩(DEHuB Lab) - 인터랙션사이언스 기반 HCI·생성형 AI 연구실. 지도교수 이대호. 사람과 AI 시스템 간의 상호작용을 연구합니다.",
+  keywords: [
+    "디허브랩",
+    "디허브",
+    "DEHuB Lab",
+    "DEHUB",
+    "성균관대학교",
+    "성균관대 디허브랩",
+    "인터랙션사이언스",
+    "이대호",
+    "지도교수 이대호",
+    "HCI",
+    "생성형 AI",
+  ],
+  openGraph: {
+    title: "디허브랩 (DEHuB Lab) - 성균관대학교",
+    description:
+      "성균관대학교 디허브랩(DEHuB Lab) - 인터랙션사이언스 기반 HCI·생성형 AI 연구실. 지도교수 이대호.",
+    siteName: "디허브랩 (DEHuB Lab)",
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

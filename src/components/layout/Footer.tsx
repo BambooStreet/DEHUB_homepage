@@ -9,6 +9,8 @@ export default function Footer() {
             <h3 className="text-xl font-bold text-white mb-3">
               DE<span className="text-primary-300">HUB</span>
             </h3>
+            <p className="text-sm text-secondary-300">성균관대학교 디허브랩</p>
+            <p className="text-sm text-secondary-300">지도교수 이대호</p>
           </div>
 
           <div>
