@@ -25,7 +25,7 @@ export default function Footer() {
             <h4 className="text-sm font-semibold text-white mb-3">Contact</h4>
             <ul className="space-y-2 text-sm text-secondary-300">
               <li>(03063) 서울특별시 종로구 성균관로 25-2</li>
-              <li>성균관대학교 인문사회과학캠퍼스 국제관 9B307A</li>
+              <li>성균관대학교 인문사회과학캠퍼스 국제관 9B302</li>
               <li>
                 <a href="mailto:daeho.lee@skku.edu" className="hover:text-primary-400 transition-colors">
                   daeho.lee@skku.edu

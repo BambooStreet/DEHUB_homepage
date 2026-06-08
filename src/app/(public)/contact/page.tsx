@@ -30,7 +30,7 @@ export default function ContactPage() {
                   <h3 className="font-medium text-secondary-800">주소</h3>
                   <p className="text-secondary-500 mt-1">
                     (03063) 서울특별시 종로구 성균관로 25-2<br />
-                    성균관대학교 인문사회과학캠퍼스 국제관 9B307A
+                    성균관대학교 인문사회과학캠퍼스 국제관 9B302
                   </p>
                 </div>
               </div>
