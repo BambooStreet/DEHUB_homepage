@@ -13,6 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.dehublab.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "디허브랩 (DEHuB Lab) - 성균관대학교",
     template: "%s | 디허브랩 (DEHuB Lab)",
@@ -36,6 +40,7 @@ export const metadata: Metadata = {
     title: "디허브랩 (DEHuB Lab) - 성균관대학교",
     description:
       "성균관대학교 디허브랩(DEHuB Lab) - 인터랙션사이언스 기반 HCI·생성형 AI 연구실. 지도교수 이대호.",
+    url: "https://www.dehublab.com",
     siteName: "디허브랩 (DEHuB Lab)",
     locale: "ko_KR",
     type: "website",
