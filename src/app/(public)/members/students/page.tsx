@@ -85,10 +85,36 @@ function StudentCard({ student }: { student: Member }) {
       <StudentPhoto student={student} />
       <div className="p-6 flex-1">
         <header className="mb-4 pb-3 border-b border-secondary-100">
-          <h3 className="text-lg font-bold text-secondary-800">
-            {student.nameEn}
-            <span className="ml-2 text-secondary-500 font-medium">{student.name}</span>
-          </h3>
+          {student.homepage ? (
+            <a
+              href={student.homepage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-1.5 text-lg font-bold text-secondary-800 hover:text-primary-600"
+              title="개인 홈페이지로 이동"
+            >
+              <h3>
+                {student.nameEn}
+                <span className="ml-2 text-secondary-500 font-medium group-hover:text-primary-600">
+                  {student.name}
+                </span>
+              </h3>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+                className="h-4 w-4 shrink-0 text-secondary-400 group-hover:text-primary-600"
+              >
+                <path d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7a1 1 0 0 0 1.414 1.414L4 10.414V17a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 1 1-1h0a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-6.586l.293.293a1 1 0 0 0 1.414-1.414l-7-7Z" />
+              </svg>
+            </a>
+          ) : (
+            <h3 className="text-lg font-bold text-secondary-800">
+              {student.nameEn}
+              <span className="ml-2 text-secondary-500 font-medium">{student.name}</span>
+            </h3>
+          )}
         </header>
 
         <dl className="space-y-3 text-sm">
