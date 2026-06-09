@@ -4,7 +4,6 @@ import { login, logout, verifyAuth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import * as mutations from "@/lib/db/mutations";
-import { uploadImage } from "@/lib/upload";
 
 // --- Auth ---
 export async function loginAction(
@@ -27,17 +26,15 @@ async function requireAuth() {
   if (!(await verifyAuth())) redirect("/admin/login");
 }
 
-async function handleImage(
+// The FileInput component uploads the file directly to Vercel Blob on the
+// client and submits the resulting URL under `fieldName` (falling back to the
+// existing image URL when nothing new was picked). So we just read the string.
+function handleImage(
   formData: FormData,
   fieldName = "image",
-  existingFieldName = "existingImage",
-): Promise<string | undefined> {
-  const file = formData.get(fieldName) as File | null;
-  if (file && file.size > 0) {
-    return await uploadImage(file);
-  }
-  const existing = formData.get(existingFieldName) as string | null;
-  return existing || undefined;
+): string | undefined {
+  const url = formData.get(fieldName);
+  return typeof url === "string" && url ? url : undefined;
 }
 
 function parseArray(value: string): string[] {
@@ -57,7 +54,7 @@ function parseLines(value: string): string[] {
 // --- Members ---
 export async function createMemberAction(formData: FormData) {
   await requireAuth();
-  const image = await handleImage(formData);
+  const image = handleImage(formData);
   const id = crypto.randomUUID();
   await mutations.createMember({
     id,
@@ -82,7 +79,7 @@ export async function createMemberAction(formData: FormData) {
 export async function updateMemberAction(formData: FormData) {
   await requireAuth();
   const id = formData.get("id") as string;
-  const image = await handleImage(formData);
+  const image = handleImage(formData);
   await mutations.updateMember(id, {
     name: formData.get("name") as string,
     nameEn: formData.get("nameEn") as string,
@@ -115,7 +112,7 @@ export async function deleteMemberAction(formData: FormData) {
 // --- News ---
 export async function createNewsAction(formData: FormData) {
   await requireAuth();
-  const image = await handleImage(formData);
+  const image = handleImage(formData);
   const id = crypto.randomUUID();
   await mutations.createNews({
     id,
@@ -139,7 +136,7 @@ export async function createNewsAction(formData: FormData) {
 export async function updateNewsAction(formData: FormData) {
   await requireAuth();
   const id = formData.get("id") as string;
-  const image = await handleImage(formData);
+  const image = handleImage(formData);
   await mutations.updateNews(id, {
     title: formData.get("title") as string,
     date: formData.get("date") as string,
@@ -231,8 +228,8 @@ function optionalString(formData: FormData, key: string): string | undefined {
 
 export async function createProjectAction(formData: FormData) {
   await requireAuth();
-  const image = await handleImage(formData);
-  const partnerLogo = await handleImage(formData, "partnerLogo", "existingPartnerLogo");
+  const image = handleImage(formData);
+  const partnerLogo = handleImage(formData, "partnerLogo");
   const id = crypto.randomUUID();
   await mutations.createProject({
     id,
@@ -255,8 +252,8 @@ export async function createProjectAction(formData: FormData) {
 export async function updateProjectAction(formData: FormData) {
   await requireAuth();
   const id = formData.get("id") as string;
-  const image = await handleImage(formData);
-  const partnerLogo = await handleImage(formData, "partnerLogo", "existingPartnerLogo");
+  const image = handleImage(formData);
+  const partnerLogo = handleImage(formData, "partnerLogo");
   await mutations.updateProject(id, {
     title: formData.get("title") as string,
     partner: optionalString(formData, "partner"),
@@ -286,7 +283,7 @@ export async function deleteProjectAction(formData: FormData) {
 // --- Awards ---
 export async function createAwardAction(formData: FormData) {
   await requireAuth();
-  const image = await handleImage(formData);
+  const image = handleImage(formData);
   const id = crypto.randomUUID();
   await mutations.createAward({
     id,
@@ -304,7 +301,7 @@ export async function createAwardAction(formData: FormData) {
 export async function updateAwardAction(formData: FormData) {
   await requireAuth();
   const id = formData.get("id") as string;
-  const image = await handleImage(formData);
+  const image = handleImage(formData);
   await mutations.updateAward(id, {
     title: formData.get("title") as string,
     recipient: formData.get("recipient") as string,
